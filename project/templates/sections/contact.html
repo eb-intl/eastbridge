@@ -1,0 +1,96 @@
+{% load staticfiles i18n %}
+<!-- Contact Section -->
+<section id="contact" class="contacts-section">
+<div class="container content-lg">
+    <div class="title-v1">
+        <h2>{% trans 'Contact Us' %}</h2>
+        <p>{% blocktrans %}Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>
+            It has been the industry's standard dummy text.{% endblocktrans %}</p>
+        </div>
+
+        <div class="row contacts-in">
+            <div class="col-md-6 md-margin-bottom-40">
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-home"></i> {% trans "113 Griggs rd Brookline MA 02446, United States" %}</li>
+                    <!-- <li><i class="fa fa-phone"></i> {% trans "" %}</li> -->
+                    <li><i class="fa fa-envelope"></i> <a href="contact@eb-intl.com">contact@eb-intl.com</a></li>
+                    <li><i class="fa fa-globe"></i> <a href="http://www.eb-intl.com">www.eb-intl.com</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <form action="{% static 'assets/php/sky-forms-pro/demo-contacts-process.php' %}" method="post" id="sky-form3" class="sky-form contact-style">
+                    <fieldset>
+                        <label>{% trans 'Name' %}</label>
+                        <div class="row">
+                            <div class="col-md-7 margin-bottom-20 col-md-offset-0">
+                                <div>
+                                    <input type="text" name="name" id="name" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <label>{% trans 'Email' %} <span class="color-red">*</span></label>
+                        <div class="row">
+                            <div class="col-md-7 margin-bottom-20 col-md-offset-0">
+                                <div>
+                                    <input type="text" name="email" id="email" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <label>{% trans 'Message' %}</label>
+                        <div class="row">
+                            <div class="col-md-11 margin-bottom-20 col-md-offset-0">
+                                <div>
+                                    <textarea rows="8" name="message" id="message" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p><button type="submit" class="btn-u btn-brd btn-brd-hover btn-u-dark">{% trans 'Send Message' %}</button></p>
+                    </fieldset>
+
+                    <div class="message">
+                        <i class="rounded-x fa fa-check"></i>
+                        <p>{% trans 'Your message was successfully sent!' %}</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+<!-- End Contact Section -->
+
+

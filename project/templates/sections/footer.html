@@ -1,0 +1,131 @@
+{% load staticfiles i18n %}
+<!-- Contact Section -->
+
+<section id="footer-v1" class="footer-v1">
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- About -->
+                <div class="col-md-3 md-margin-bottom-40">
+                    <a href="/"><img id="logo-footer" class="footer-logo" src="{% static 'assets/img/logo.gif' %}"
+                                             height="60", width="160" alt=""></a>
+                    <p>Lorem dolor sit amet, consectetur  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor et dolore magna aliqua.</p>
+                </div>
+                <!-- End About -->
+
+                <!-- Latest -->
+                <div class="col-md-3 md-margin-bottom-40">
+                    <div class="posts">
+                        <div class="headline"><a href="{% url 'apps:blog:list' %}"><h2>Latest Posts</h2></a></div>
+                        <ul class="list-unstyled latest-list">
+                            {% for post in latest_news.all %}
+                                <li>
+                                    <a href="{% url 'apps:blog:detail' post.created.year post.created.month post.created.day post.slug %}">{{ post.title }}</a>
+                                    <small>{{ post.created }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Latest -->
+
+                <!-- Link List -->
+                <div class="col-md-3 md-margin-bottom-40">
+                    <div class="headline"><h2>Useful Links</h2></div>
+                    <ul class="list-unstyled link-list">
+                        <li><a href="#">Services</a><i class="fa fa-angle-right"></i></li>
+                        <li><a href="#">Factories</a><i class="fa fa-angle-right"></i></li>
+                        <li><a href="#">News / RSS</a><i class="fa fa-rss"></i></li>
+                    </ul>
+                </div>
+                <!-- End Link List -->
+
+                <!-- Address -->
+                <div class="col-md-3 map-img md-margin-bottom-40">
+                    <div class="headline"><h2>Headquarters</h2></div>
+                    <address class="md-margin-bottom-40" style="margin-bottom: 0px;">
+                        113 Griggs Road<br>
+                        Boston, Massachusetts<br>
+                        02446, United States<br>
+                        Phone: +1.617.401.7373<br>
+                        Email: <a href="mailto:contact@eb-intl.com" class="">contact@eb-intl.com</a>
+                    </address>
+                    <ul class="list-unstyled link-list">
+                        <li><a href="#contactModal" data-toggle="modal" data-target="#contactModal">Contact us</a><i class="fa fa-phone"></i></li>
+                        <li><a href="#">International Offices</a><i class="fa fa-angle-right"></i></li>
+                    </ul>
+                </div>
+                <!-- End Address -->
+            </div>
+        </div>
+    </div><!--/footer-->
+
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>{% trans '2016 © All Rights Reserved.' %}
+                        <a href="#">{% trans 'Privacy Policy' %}</a> | <a href="#">{% trans 'Terms of Service' %}</a>
+                    </p>
+                </div>
+
+                <!-- Social Links -->
+                <div class="col-md-6">
+                    <ul class="footer-socials list-inline">
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="Facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="Skype">
+                                <i class="fa fa-skype"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="Google Plus">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="Linkedin">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="Pinterest">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="Twitter">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="tooltips" data-toggle="tooltip" data-placement="top" title=""
+                               data-original-title="Dribbble">
+                                <i class="fa fa-dribbble"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Social Links -->
+            </div>
+        </div>
+    </div><!--/copyright-->
+</section>
+
+<!-- End Contact Section -->
+
+
+
+
+

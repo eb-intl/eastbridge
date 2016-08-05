@@ -1,0 +1,166 @@
+{% load staticfiles i18n %}
+<!--  About Section -->
+<section id="about" class="about-section section-first">
+    <div class="block-v1">
+        <div class="container">
+            <div class="row content-boxes-v3">
+                {% for cbox in contentboxes %}
+                <div class="col-md-4 md-margin-bottom-30">
+                    <i class="icon-custom rounded-x icon-bg-dark fa fa-{{ cbox.icon }}"></i>
+                    <div class="content-boxes-in-v3">
+                        <h2 class="heading-sm">{% trans cbox.title %}</h2>
+                        <p>{{ cbox.description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="about-image bg-grey">
+        {% for tbox in textboxes %}
+        <div class="container">
+            <div class="title-v1">
+                <h1>{% trans tbox.title %}</h1>
+                <p>{{ tbox.body }}</p>
+            </div>
+            <div class="img-center">
+                <img class="img-responsive" src="{{ tbox.image.get_1000x550_url }}" alt="{{ tbox.iamge.}}">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+
+{% comment %}
+    <div class="container content-lg">
+        <div class="title-v1">
+            <h2>Our Vision And Mission</h2>
+            <p>We <strong>meet</strong> and get to know you. You tell us and we listen. <br>
+                We build your website to realise your vision and we <strong>deliver</strong> the ready product.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 content-boxes-v3 margin-bottom-40">
+                <div class="clearfix margin-bottom-30">
+                    <i class="icon-custom icon-md rounded-x icon-bg-u icon-line icon-trophy"></i>
+                    <div class="content-boxes-in-v3">
+                        <h2 class="heading-sm">Innovation Leader</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's</p>
+                    </div>
+                </div>
+                <div class="clearfix margin-bottom-30">
+                    <i class="icon-custom icon-md rounded-x icon-bg-u icon-line icon-directions"></i>
+                    <div class="content-boxes-in-v3">
+                        <h2 class="heading-sm">Best Solutions &amp; Approaches</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's</p>
+                    </div>
+                </div>
+                <div class="clearfix margin-bottom-30">
+                    <i class="icon-custom icon-md rounded-x icon-bg-u icon-line icon-diamond"></i>
+                    <div class="content-boxes-in-v3">
+                        <h2 class="heading-sm">Quality Service &amp; Support</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <img class="img-responsive" src="{% static 'assets/img/mockup/mockup1.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-quote parallaxBg">
+        <div class="container">
+            <div class="parallax-quote-in">
+                <p>If you can design one thing <span class="color-green">you can design</span> everything. <br> Just
+                    Believe It.</p>
+                <small>- HtmlStream -</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="team-v1 bg-grey content-lg">
+        <div class="container">
+            <div class="title-v1">
+                <h2>{% trans 'Our Team' %}</h2>
+
+                <p><strong>EastBridge Engineering, a division of the EastBridge family of companies, was founded in 2003
+                    to provide manufacturers, product designers and entrepreneurs with on site manufacturing management
+                    and related services around the world.</strong>
+                    <br>Our engineers and staff of specialists manage new product development, production scale-up,
+                    quality assurance and global logistics.
+                    <br>The EastBridge staff offers decades of experience in manufacturing engineering & procurement,
+                    international trade and contract management. They are qualified in engineering, material science and
+                    are fluent in Chinese and a variety of languages.
+
+                </p>
+            </div>
+
+
+            <ul class="list-unstyled row">
+                {% for member in team %}
+                <li class="col-sm-3 col-xs-6 md-margin-bottom-30">
+                    <div class="team-img">
+                        <img class="img-responsive" src="{{ member.image.get_display_url }}" alt="">
+                        <ul>
+                            <li><a href="#"><i class="icon-custom icon-sm rounded-x fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-custom icon-sm rounded-x fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-custom icon-sm rounded-x fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                    <h3>{{ member.name }}</h3>
+                    <h4>/ {{ member.position}}</h4>
+                    <p>{{ member.short_description|truncatechars:100 }}</p>
+                </li>
+                {% endfor %}
+
+
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="parallax-counter parallaxBg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 col-xs-6">
+                    <div class="counters">
+                        <span class="counter">150</span>
+                        <h4>{% trans 'Clients' %}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="counters">
+                        <span class="counter">277</span>
+                        <h4>{% trans 'Products' %}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="counters">
+                        <span class="counter">334</span>
+                        <h4>{% trans 'Our Team' %}</h4>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-6">
+                    <div class="counters">
+                        <span class="counter">509</span>
+                        <h4>{% trans 'Factories' %}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endcomment %}
+</section>
+<!--  About Section -->

@@ -1,0 +1,276 @@
+{% load staticfiles cms_tags menu_tags sekizai_tags i18n %}
+{% comment %}
+
+    top_nav_collapse
+
+{% endcomment %}
+<!--=== Header ===-->
+<nav class="one-page-header navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="menu-container page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/">
+                <span>East</span>Bridge <br>
+                <small style="font-size: 14px; color:darkgray;">Strategic Sourcing</small>
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <div class="menu-container">
+                <ul class="nav navbar-nav">
+                    {% show_menu 0 100 100 100 "menu.html" %}
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!--=== End Header ===-->
+
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true"
+     style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="" method="post" id="sky-form3" class="sky-form" novalidate="novalidate" _lpchecked="1">
+                <div class="modal-header">
+                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                    <h4 id="contactModalLabel1" class="modal-title">{% trans 'Contact Us' %}</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>Questions you want to ask <small>Optional</small></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+
+                    <section>
+                        <label class="select state-success">
+                            <select name="budget" class="valid">
+                                <option value="">-- Business Stage --</option>
+                                <option value="">Development / Seed</option>
+                                <option value="">Startup</option>
+                                <option value="">Growth / Survival</option>
+                                <option value="">Maturity</option>
+                            </select>
+                            <i></i>
+                        </label>
+                    </section>
+
+
+                    <section>
+                        <label class="select state-success">
+                            <select name="budget" class="valid">
+                                <option value="0" selected="" disabled="">-- Your Budget --</option>
+                                <option value="less than 5000$">less than 5000$</option>
+                                <option value="5000$ - 10000$">5000$ - 10000$</option>
+                                <option value="10000$ - 20000$">10000$ - 20000$</option>
+                                <option value="more than 20000$">more than 20000$</option>
+                            </select>
+                            <i></i>
+                        </label>
+                    </section>
+
+                    <h4>Message</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
+
+                    <div class="row">
+                        <section class="col col-6">
+                            <label class="label">Name</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="name" id="name"
+                                       style="cursor: auto; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; background-repeat: no-repeat;">
+                            </label>
+                        </section>
+                        <section class="col col-6">
+                            <label class="label">E-mail</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-envelope-o"></i>
+                                <input type="email" name="email2" id="email2">
+                            </label>
+                        </section>
+                    </div>
+
+                    <section>
+                        <label class="label">Subject</label>
+                        <label class="input">
+                            <i class="icon-append fa fa-tag"></i>
+                            <input type="text" name="subject" id="subject">
+                        </label>
+                    </section>
+
+                    <section>
+                        <label class="label">Message</label>
+                        <label class="textarea">
+                            <i class="icon-append fa fa-comment"></i>
+                            <textarea rows="4" name="message" id="message"></textarea>
+                        </label>
+                    </section>
+
+
+                    <section>
+                        <label class="checkbox"><input type="checkbox" name="copy"><i></i>Send a copy to my e-mail
+                            address</label>
+                    </section>
+
+
+                    <div class="message">
+                        <i class="rounded-x fa fa-check"></i>
+                        <p>Your message was successfully sent!</p>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn-u btn-u-default" type="button">Close</button>
+                    <button class="btn-u" type="submit">Send message</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+{% comment %}
+<div class="tag-box tag-box-v3 tag-text-space margin-bottom-40">
+						<!-- Bootstrap Modal -->
+						<div class="margin-bottom-50">
+							<div class="headline"><h2>Bootstrap Modals</h2></div>
+							<p>The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds <code>.modal-open</code> to the <code>&lt;body&gt;</code> to override default scrolling behavior and generates a <code>.modal-backdrop</code> to provide a click area for dismissing shown modals when clicking outside the modal. You can find more detailed information from the offecial Bootstrap website <a target="_blank" href="http://getbootstrap.com/javascript/#modals">http://getbootstrap.com/javascript/#modals</a></p>
+
+							<!-- Modal -->
+							<button class="btn-u" data-toggle="modal" data-target="#myModal">Modal Sample</button>
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+											<h4 id="myModalLabel1" class="modal-title">Modal Heading</h4>
+										</div>
+										<div class="modal-body">
+											<h4>Text in a modal</h4>
+											<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+
+											<h4>Popover in a modal</h4>
+											<p>This <a data-content="And here's some amazing content. It's very engaging. right?" title="" class="btn-u btn-u-default popover-test" role="button" href="#" data-original-title="A Title">button</a> should trigger a popover on click.</p>
+
+											<h4>Tooltips in a modal</h4>
+											<p><a title="" class="tooltip-test" href="#" data-original-title="Tooltip">This link</a> and <a title="" class="tooltip-test" href="#" data-original-title="Tooltip">that link</a> should have tooltips on hover.</p>
+
+											<hr>
+
+											<h4>Overflowing text to show scroll behavior</h4>
+											<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+											<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+											<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+											<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+											<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+											<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+											<p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+											<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+											<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+										</div>
+										<div class="modal-footer">
+											<button data-dismiss="modal" class="btn-u btn-u-default" type="button">Close</button>
+											<button class="btn-u" type="button">Save changes</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End Modal -->
+
+							<!-- Large modal -->
+							<button class="btn-u" data-toggle="modal" data-target=".bs-example-modal-lg">Large Modal</button>
+
+							<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+											<h4 id="myLargeModalLabel2" class="modal-title">Large Modal</h4>
+										</div>
+										<div class="modal-body">
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mattis odio. In hac habitasse platea dictumst. Vestibulum volutpat pretium porta. Cras mattis metus non ipsum porttitor pulvinar. Proin tempus erat ac neque gravida suscipit. Morbi faucibus turpis a turpis hendrerit sodales sed vel nisl. Praesent vitae magna luctus, blandit quam eu, semper mi.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Large modal -->
+
+							<!-- Small modal -->
+							<button class="btn-u" data-toggle="modal" data-target=".bs-example-modal-sm">Small Modal</button>
+
+							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-sm">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+											<h4 id="myLargeModalLabel3" class="modal-title">Sarge Modal</h4>
+										</div>
+										<div class="modal-body">
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mattis odio. In hac habitasse platea dictumst. Vestibulum volutpat pretium porta. Cras mattis metus non ipsum porttitor pulvinar. Proin tempus erat ac neque gravida suscipit. Morbi faucibus turpis a turpis hendrerit sodales sed vel nisl. Praesent vitae magna luctus, blandit quam eu, semper mi.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End Small Modal -->
+						</div>
+						<!-- End Bootstrap Modal -->
+
+						<!-- Bootstrap Modals With Forms -->
+						<div class="margin-bottom-40">
+							<h3 class="heading-sm">Bootstrap Modals With Forms</h3>
+							<p>You are alos able to use Bootstrap Modals with forms. Here is an examples of Bootstrap Modal forms:</p>
+
+							<button class="btn-u" data-toggle="modal" data-target="#responsive">Modal Form Sample</button>
+							<div class="modal fade" id="responsive" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title" id="myModalLabel4">Responsive Modal</h4>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-md-6">
+													<h4>Some Input</h4>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+												</div>
+												<div class="col-md-6">
+													<h4>Some More Input</h4>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+													<p><input class="form-control" type="text"></p>
+												</div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
+											<button type="button" class="btn-u btn-u-primary">Save changes</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- End Bootstrap Modals With Forms -->
+					</div>
+
+{% endcomment %}
