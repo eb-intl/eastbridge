@@ -13,7 +13,6 @@ class TextBoxAdmin(admin.ModelAdmin):
     ordering = ['id', 'order', 'title', 'body']
     list_display_links = ('id', 'title')
 
-
 @admin.register(ContentBox)
 class ContentBoxAdmin(admin.ModelAdmin):
     list_display = ('id', 'order', 'title', 'description')

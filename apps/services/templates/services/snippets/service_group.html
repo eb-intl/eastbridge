@@ -1,0 +1,22 @@
+<section id="services">
+    <div class="container content-sm">
+
+        <div class="text-center margin-bottom-50">
+            <h2 class="title-v2 title-center">{{ instance.service.title }}</h2>
+            <p class="space-lg-hor">{{ instance.service.description|safe }}.</p>
+        </div>
+
+        <div class="row content-boxes-v4 content-boxes-v4-sm">
+            {% for service in instance.service.services.all %}
+                <div class="col-md-4 md-margin-bottom-40">
+                    <i class="pull-left fa fa-{{ service.icon }}"></i>
+                    <div class="content-boxes-in-v4">
+                        <a href="{% url 'services:detail' service.slug %}"><h2>{{ service.title }}</h2></a>
+                        <p>{{ service.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>

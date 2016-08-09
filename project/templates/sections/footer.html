@@ -17,14 +17,12 @@
                 <!-- Latest -->
                 <div class="col-md-3 md-margin-bottom-40">
                     <div class="posts">
-                        <div class="headline"><a href="{% url 'apps:blog:list' %}"><h2>Latest Posts</h2></a></div>
+                        <div class="headline"><a href=""><h2>Latest Posts</h2></a></div>
                         <ul class="list-unstyled latest-list">
-                            {% for post in latest_news.all %}
-                                <li>
-                                    <a href="{% url 'apps:blog:detail' post.created.year post.created.month post.created.day post.slug %}">{{ post.title }}</a>
-                                    <small>{{ post.created }}</small>
-                                </li>
+                            {% for article in news.all %}
+                                <li><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}">{{ article.title }}</a><small>{{ article.created }}</small></li>
                             {% endfor %}
+
                         </ul>
                     </div>
                 </div>
@@ -34,9 +32,9 @@
                 <div class="col-md-3 md-margin-bottom-40">
                     <div class="headline"><h2>Useful Links</h2></div>
                     <ul class="list-unstyled link-list">
-                        <li><a href="#">Services</a><i class="fa fa-angle-right"></i></li>
+                        <li><a href="{% url 'services:list' %}">Services</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="#">Factories</a><i class="fa fa-angle-right"></i></li>
-                        <li><a href="#">News / RSS</a><i class="fa fa-rss"></i></li>
+                        <li><a href="{% url 'blog:list' %}">News / RSS</a><i class="fa fa-rss"></i></li>
                     </ul>
                 </div>
                 <!-- End Link List -->
@@ -45,11 +43,9 @@
                 <div class="col-md-3 map-img md-margin-bottom-40">
                     <div class="headline"><h2>Headquarters</h2></div>
                     <address class="md-margin-bottom-40" style="margin-bottom: 0px;">
-                        113 Griggs Road<br>
-                        Boston, Massachusetts<br>
-                        02446, United States<br>
-                        Phone: +1.617.401.7373<br>
-                        Email: <a href="mailto:contact@eb-intl.com" class="">contact@eb-intl.com</a>
+                        {{ office.address|safe }}
+                        Phone: {{ office.telephone }}<br>
+                        Email: <a href="mailto:{{ office.email }}" class="">{{ office.email }}</a>
                     </address>
                     <ul class="list-unstyled link-list">
                         <li><a href="#contactModal" data-toggle="modal" data-target="#contactModal">Contact us</a><i class="fa fa-phone"></i></li>

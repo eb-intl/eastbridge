@@ -5,3 +5,4 @@ from django.apps import AppConfig
 
 class ServicesConfig(AppConfig):
     name = 'about'
+    verbose_name = "About"

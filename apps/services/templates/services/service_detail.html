@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+    {% include 'services/snippets/breadcrumbs.html' %}
+
+    <div class="container content" style="padding-top: 10px;">
+        <div class="row blog-page blog-item">
+            <!-- Left Sidebar -->
+            <div class="col-md-12 md-margin-bottom-60">
+                <!--Blog Post-->
+                <div class="blog margin-bottom-40">
+                    <h1>{{ object.title }}</h1>
+                    <div class="blog-post-tags">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li>
+                                <i class="fa fa-calendar"></i> {{ object.created }}
+                            </li>
+                            <li><i class="fa fa-pencil"></i>
+                                {{ object.authors.all|join:", " }}</li>
+                        </ul>
+                        <ul class="list-unstyled list-inline blog-tags">
+                            <li>
+                                {% for tag in object.tags.all %}
+                                    <i class="fa fa-tags"></i>
+                                    <a href="#">{{ tag.name }}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-img">
+                        <img class="img-responsive"
+                             src="{{ object.image.get_360x220_url }}"
+                             alt="{{ object.image.caption|safe }}">
+                    </div>
+                    <p>{{ object.text|safe }}</p><br>
+                </div>
+                <!--End Blog Post-->
+
+
+            </div>
+            <!-- End Left Sidebar -->
+        </div><!--/row-->
+    </div>
+{% endblock %}

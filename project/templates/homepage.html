@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+{% block content %}
+    {% include 'sections/intro.html' %}
+
+    <section id="about" class="about-section section-first">
+        <div class="block-v1">
+            <div class="container">
+                <div class="row content-boxes-v3">
+
+                    {% placeholder "about" %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    {% placeholder "services" %}
+    {% placeholder "products" %}
+    {% placeholder "clients" %}
+    {% placeholder "news" %}
+    {% placeholder "footer" %}
+{% endblock content %}

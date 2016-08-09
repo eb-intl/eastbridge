@@ -5,7 +5,7 @@
 
 {% endcomment %}
 <!--=== Header ===-->
-<nav class="one-page-header navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="one-page-header navbar navbar-default navbar-fixed-top{% if request.path != '/en/' %} top-nav-collapse{% endif %}" role="navigation">
     <div class="container">
         <div class="menu-container page-scroll">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

@@ -1,0 +1,25 @@
+<div class="col-md-4 md-margin-bottom-30">
+    <i class="icon-custom rounded-x icon-bg-dark fa fa-{{ instance.content_box.icon }}"></i>
+    <div class="content-boxes-in-v3">
+        <h2 class="heading-sm">{{ instance.content_box.title }}</h2>
+        <p>{{ instance.content_box.description }}</p>
+    </div>
+</div>
+
+
+{% comment %}
+<form action="{% url 'polls:vote' instance.poll.id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {% for choice in instance.poll.choice_set.all %}
+            <div class="radio">
+                <label>
+                    <input type="radio" name="choice" value="{{ choice.id }}">
+                    {{ choice.choice_text }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+    <input type="submit" value="Vote" />
+</form>
+{% endcomment %}

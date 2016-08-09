@@ -4,6 +4,8 @@ from django.db import models
 from django.contrib.sites.models import Site
 from fontawesome.fields import IconField
 from photologue.models import Photo
+from django.db import models
+from cms.models import CMSPlugin
 
 
 class ContentBox(models.Model):
@@ -26,3 +28,10 @@ class TextBox(models.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class ContentBoxPluginModel(CMSPlugin):
+    content_box = models.ForeignKey(ContentBox)
+
+    def __unicode__(self):
+        return self.content_box.title

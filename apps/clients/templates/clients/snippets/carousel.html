@@ -1,0 +1,34 @@
+{% load staticfiles i18n %}
+<!-- News Section -->
+<section id="news" class="news-section">
+    <div class="container content-lg">
+        <div class="title-v1">
+            <a href="{% url 'blog:list' %}"><h2>{% trans 'Latest News' %}</h2></a>
+            <p>{% blocktrans %}We do <strong>things</strong> differently
+                company providing key digital services. <br>
+                Focused on helping our clients to build a
+                <strong>successful</strong> business on web and
+                mobile.{% endblocktrans %}</p>
+        </div>
+
+        <div class="row news-v1">
+            {% for object in latest_news.all %}
+            <div class="col-md-4 md-margin-bottom-40">
+                <div class="news-v1-in">
+                    <img class="img-responsive"
+                         src="{{ object.image.get_360x220_url }}"
+                         alt="{{ object.image.caption }}">
+                    <h3><a href="{% url 'blog:detail' object.created.year object.created.month object.created.day object.slug %}">{{ object.title }}</a></h3>
+                    <p>{{ object.description }}</p>
+                    <ul class="list-inline news-v1-info">
+                        <li><span>{% trans 'By' %}</span> <a href="#">{{ object.authors.all|join:', ' }}</a></li>
+                        <li>|</li>
+                        <li><i class="fa fa-clock-o"></i>{{ object.created }}</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- End News Section -->
