@@ -46,11 +46,13 @@ class Article(models.Model):
     updated = models.DateTimeField(auto_now_add=True)
     publish = models.BooleanField(default=False)
 
-    image = models.ForeignKey(Photo, related_name='articles', blank=True, null=True)
+    image = models.ForeignKey(
+        Photo, related_name='articles', blank=True, null=True)
     authors = models.ManyToManyField('company.Employee', blank=True)
     tags = models.ManyToManyField(Tag, related_name='articles')
     gallery = models.ManyToManyField(Gallery, blank=True)
-    files = models.ManyToManyField(ArticleFile, related_name='articles', blank=True)
+    files = models.ManyToManyField(
+        ArticleFile, related_name='articles', blank=True)
 
     def __unicode__(self):
         return self.title
@@ -60,4 +62,4 @@ class Article(models.Model):
                   'month': self.created.month,
                   'day': self.created.day,
                   'slug': self.slug}
-        return reverse('blog-detail', kwargs=kwargs)
+        return reverse('blog:detail', kwargs=kwargs)

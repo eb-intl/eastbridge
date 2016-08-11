@@ -34,7 +34,8 @@
                     <ul class="list-unstyled link-list">
                         <li><a href="{% url 'services:list' %}">Services</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="#">Factories</a><i class="fa fa-angle-right"></i></li>
-                        <li><a href="{% url 'blog:list' %}">News / RSS</a><i class="fa fa-rss"></i></li>
+                        <li><a href="{% url 'blog:rss' %}" target="_blank">RSS</a><i class="fa fa-rss"></i></li>
+                        <li><a href="{% url 'blog:files' %}">Files</a><i class="fa fa-file"></i></li>
                     </ul>
                 </div>
                 <!-- End Link List -->
@@ -62,7 +63,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>{% trans '2016 © All Rights Reserved.' %}
-                        <a href="#">{% trans 'Privacy Policy' %}</a> | <a href="#">{% trans 'Terms of Service' %}</a>
+                        <a href="/privacy-policy">{% trans 'Privacy Policy' %}</a> | <a href="/terms">{% trans 'Terms of Service' %}</a>
                     </p>
                 </div>
 

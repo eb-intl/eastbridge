@@ -2,7 +2,7 @@
 {% load staticfiles i18n %}
 
 {% block meta %}
-    <meta name="description" content="{{ object.description }} - ">
+    <meta name="description" content="{{ object.description }}">
     <meta name="keywords" content="{{ object.tags.all|join:',' }}">
     <meta name="author" content="{{ object.authors.all|join:", " }}">
 {% endblock %}
@@ -12,11 +12,11 @@
 {% block content %}
     <div class="breadcrumbs" style="margin-top: 60px;">
         <div class="container">
-            <h1 class="pull-left">{{ object.title|default:'News' }}</h1>
+            <h1 class="pull-left">News</h1>
             <ul class="pull-right breadcrumb">
                 <li><a href="/">Home</a></li>
                 <li><a href="{% url 'blog:list' %}">News</a></li>
-                <li class="active">{{ object.title|default:'News' }}</li>
+                <li class="active">{{ object.title|truncatechars:30|default:'News' }}</li>
 
             </ul>
         </div>
@@ -28,7 +28,9 @@
             <div class="col-md-9 md-margin-bottom-60">
                 <!--Blog Post-->
                 <div class="blog margin-bottom-40">
-
+                    <h1>{{ object.title }}
+                        <small>{{ object.subtitle|default:'' }}</small>
+                    </h1>
                     <div class="blog-post-tags">
                         <ul class="list-unstyled list-inline blog-info">
                             <li>
@@ -53,6 +55,8 @@
                     <p>{{ object.body|safe }}</p><br>
                 </div>
                 <!--End Blog Post-->
+
+                {% include 'snippets/disqus.html' %}
             </div>
             <!-- End Left Sidebar -->
 
@@ -93,7 +97,7 @@
                 <!-- Files -->
                 <div class="posts margin-bottom-40">
                     <div class="headline headline-md">
-                        <a href="{% url 'blog:file_list' %}"><h2>{% trans 'Recent Files' %}</h2></a>
+                        <a href="{% url 'blog:files' %}"><h2>{% trans 'Recent Files' %}</h2></a>
                     </div>
 
                     <ul class="list-unstyled">

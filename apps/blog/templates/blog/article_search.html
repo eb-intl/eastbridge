@@ -38,66 +38,59 @@
 
 <div class="container s-results margin-bottom-50">
     <div class="row">
-        <div class="col-md-2 hidden-xs related-search">
-            <div class="row">
-                <div class="col-md-12 col-sm-4">
-                    <h3>Related searches</h3>
+        <div class="col-md-3 hidden-xs related-search">
+
+                <!-- Posts -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md">
+                        <a href="{% url 'blog:search' %}"><h2>{% trans 'Recent Posts' %}</h2></a>
+                    </div>
+
+                    {% for article in news.all %}
+                        <dl class="dl-horizontal">
+                            <dt><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}"><img src="{{ article.image.get_64x64_url }}" alt="{{ article.image.caption|safe }}"/></a></dt>
+                            <dd>
+                                <p><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}">{{ article.description|safe|truncatechars:80 }}.</a></p>
+                            </dd>
+                        </dl>
+                    {% endfor %}
+                    </dl>
+                </div><!--/posts-->
+                <!-- End Posts -->
+
+
+                <!-- Files -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md">
+                        <a href="{% url 'blog:files' %}"><h2>{% trans 'Recent Files' %}</h2></a>
+                    </div>
+
                     <ul class="list-unstyled">
-                        <li><a href="#">Web design company</a></li>
-                        <li><a href="#">Web design tutorials</a></li>
-                        <li><a href="#">Self designing</a></li>
+                        {% for file in files.all %}
+                        <li><i class="fa fa-{{ file.icon }}"></i><a href="{{ file.file.url }}"> {{ file.title|truncatechars:40 }}</a></li>
+                         {% endfor %}
                     </ul>
-                    <hr>
-                </div>
 
-                <div class="col-md-12 col-sm-4">
-                    <h3>Tutorials</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Basic Concepts</a></li>
-                        <li><a href="#">‎Building your first web page</a></li>
-                        <li><a href="#">‎Advanced HTML</a></li>
-                    </ul>
-                    <hr>
                 </div>
+                <!-- End Files -->
 
-                <div class="col-md-12 col-sm-4">
-                    <h3>Trending topics</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Bootstrap</a></li>
-                        <li><a href="#">Wrapbootstrap</a></li>
-                        <li><a href="#">Codrops</a></li>
-                    </ul>
-                    <hr>
+                <!-- Blog Latest Tweets -->
+                <div class="blog-twitter margin-bottom-30">
+                    <div class="headline headline-md">
+                        <h2><a class="twitter-timeline" data-height="400"
+                               data-lang="en"
+                               href="https://twitter.com/EB_Engineering"></a>
+                        </h2>
+                    </div>
+
+                    <script async src="//platform.twitter.com/widgets.js"
+                            charset="utf-8"></script>
                 </div>
+                <!-- End Blog Latest Tweets -->
+        </div>
 
-                <div class="col-md-12 col-sm-4">
-                    <h3>Search history</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Web design articles</a></li>
-                        <li><a href="#">Tutorials for web design</a></li>
-                    </ul>
-                    <a class="see-all" href="#">See all</a>
-                    <hr>
-                </div>
-
-                <div class="col-md-12 col-sm-4">
-                    <h3>Related pictures</h3>
-                    <ul class="list-unstyled blog-photos margin-bottom-30">
-                        <li><a href="#"><img src="assets/img/sliders/elastislide/5.jpg" alt="" class="hover-effect"></a></li>
-                        <li><a href="#"><img src="assets/img/sliders/elastislide/6.jpg" alt="" class="hover-effect"></a></li>
-                        <li><a href="#"><img src="assets/img/sliders/elastislide/8.jpg" alt="" class="hover-effect"></a></li>
-                        <li><a href="#"><img src="assets/img/sliders/elastislide/10.jpg" alt="" class="hover-effect"></a></li>
-                        <li><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" class="hover-effect"></a></li>
-                        <li><a href="#"><img src="assets/img/sliders/elastislide/1.jpg" alt="" class="hover-effect"></a></li>
-                        <li><a href="#"><img src="assets/img/sliders/elastislide/2.jpg" alt="" class="hover-effect"></a></li>
-                        <li><a href="#"><img src="assets/img/sliders/elastislide/7.jpg" alt="" class="hover-effect"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div><!--/col-md-2-->
-
-        <div class="col-md-10">
-            <span class="results-number">About 384,907 results</span>
+        <div class="col-md-9">
+            <span class="results-number">About {{ page_obj.paginator.count }} results</span>
 
              {% for object in object_list %}
                 <div class="inner-results">

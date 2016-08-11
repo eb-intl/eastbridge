@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
 from django.views.generic import ListView, DetailView
+from django.contrib.syndication.views import Feed
+from django.core.urlresolvers import reverse
 
 from .models import Article, ArticleFile
 
@@ -25,3 +26,19 @@ class ArticleSearch(ListView):
 
 class ArticleDetail(DetailView):
     model = Article
+
+
+class LatestEntriesFeed(Feed):
+    title = "EastBridge Strategic Sourcing - News"
+    link = "/news/"
+    description = "Latest news from EastBridge Strategic Sourcing"
+
+    def items(self):
+        return Article.objects.order_by('-created')[:10]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.description
+

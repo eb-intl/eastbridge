@@ -1,6 +1,7 @@
 from django.conf.urls import url
 
-from .views import ArticleSearch, ArticleDetail, ArticleList, FileList
+from .views import ArticleSearch, ArticleDetail, ArticleList, FileList, \
+    LatestEntriesFeed
 
 
 urlpatterns = [
@@ -9,8 +10,9 @@ urlpatterns = [
         ArticleDetail.as_view(), name='detail'),
 
     url(r'^search$', ArticleSearch.as_view(), name='search'),
-    url(r'^files$', FileList.as_view(), name='file_list'),
+    url(r'^files$', FileList.as_view(), name='files'),
 
-    url(r'^search$', ArticleSearch.as_view(), name='search'),
+    url(r'^latest\.rss', LatestEntriesFeed(), name='rss'),
+
     url(r'^$', ArticleList.as_view(), name='list'),
 ]
