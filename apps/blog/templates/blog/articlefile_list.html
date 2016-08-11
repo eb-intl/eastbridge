@@ -1,0 +1,190 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}{% endblock title %}
+
+{% block meta %}
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="Hege Refsnes">
+{% endblock %}
+
+{% block content %}
+    <div class="breadcrumbs" style="margin-top: 60px;">
+        <div class="container">
+            <h1 class="pull-left">{{ object.title|default:'Files' }}</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'blog:list' %}">News</a></li>
+                <li class="active">{{ object.title|default:'Files' }}</li>
+            </ul>
+        </div>
+    </div>
+
+
+<!--=== Search Block Version 2 ===-->
+<div class="search-block-v2" style="margin:30px;">
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="input-group">
+                <input name="q" type="text" class="form-control" placeholder="Search ...">
+                <span class="input-group-btn">
+                    <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div><!--/container-->
+<!--=== End Search Block Version 2 ===-->
+
+<!--=== Search Results ===-->
+<div class="container s-results margin-bottom-50">
+    <div class="row">
+        <div class="col-md-2 hidden-xs related-search">
+            <div class="row">
+                <div class="col-md-12 col-sm-4">
+                    <h3>Related searches</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Web design company</a></li>
+                        <li><a href="#">Web design tutorials</a></li>
+                        <li><a href="#">Self designing</a></li>
+                    </ul>
+                    <hr>
+                </div>
+
+                <div class="col-md-12 col-sm-4">
+                    <h3>Tutorials</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Basic Concepts</a></li>
+                        <li><a href="#">‎Building your first web page</a></li>
+                        <li><a href="#">‎Advanced HTML</a></li>
+                    </ul>
+                    <hr>
+                </div>
+
+                <div class="col-md-12 col-sm-4">
+                    <h3>Trending topics</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Bootstrap</a></li>
+                        <li><a href="#">Wrapbootstrap</a></li>
+                        <li><a href="#">Codrops</a></li>
+                    </ul>
+                    <hr>
+                </div>
+
+                <div class="col-md-12 col-sm-4">
+                    <h3>Search history</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Web design articles</a></li>
+                        <li><a href="#">Tutorials for web design</a></li>
+                    </ul>
+                    <a class="see-all" href="#">See all</a>
+                    <hr>
+                </div>
+
+                <div class="col-md-12 col-sm-4">
+                    <h3>Related pictures</h3>
+                    <ul class="list-unstyled blog-photos margin-bottom-30">
+                        <li><a href="#"><img src="assets/img/sliders/elastislide/5.jpg" alt="" class="hover-effect"></a></li>
+                        <li><a href="#"><img src="assets/img/sliders/elastislide/6.jpg" alt="" class="hover-effect"></a></li>
+                        <li><a href="#"><img src="assets/img/sliders/elastislide/8.jpg" alt="" class="hover-effect"></a></li>
+                        <li><a href="#"><img src="assets/img/sliders/elastislide/10.jpg" alt="" class="hover-effect"></a></li>
+                        <li><a href="#"><img src="assets/img/sliders/elastislide/11.jpg" alt="" class="hover-effect"></a></li>
+                        <li><a href="#"><img src="assets/img/sliders/elastislide/1.jpg" alt="" class="hover-effect"></a></li>
+                        <li><a href="#"><img src="assets/img/sliders/elastislide/2.jpg" alt="" class="hover-effect"></a></li>
+                        <li><a href="#"><img src="assets/img/sliders/elastislide/7.jpg" alt="" class="hover-effect"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div><!--/col-md-2-->
+
+        <div class="col-md-10">
+            <span class="results-number">About 384,907 results</span>
+
+            {% for object in object_list %}
+                <!-- Begin Inner Results -->
+                <div class="inner-results">
+                    <h3><a href="#">{{ object.title }}</a></h3>
+                    <ul class="list-inline list-inline blog-tags">
+                        <i class="fa fa-tags"></i>
+                        {% for tag in object.tags.all %}
+                            <li>{{ tag.name }}‎</li>
+                        {% endfor %}
+                    </ul>
+                    <p>{{ object.description }}</p>
+                    <ul class="list-inline down-ul">
+                        <li>{{ object.file.uploaded_at }}</li>
+                        <li>Uploaded By <a href="{% url 'team:detail' object.uploaded_by.slug %}">{{ object.uploaded_by.name }}</a></li>
+                    </ul>
+                </div>
+                <!-- Begin Inner Results -->
+                <hr>
+            {% endfor %}
+
+
+
+            <div class="margin-bottom-30"></div>
+
+            {% include 'snippets/pagination.html' %}
+        </div><!--/col-md-10-->
+    </div>
+</div><!--/container-->
+<!--=== End Search Results ===-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+
+
+
+    <div class="blog_masonry_3col" style="padding-top: 10px;">
+        <div class="container content grid-boxes masonry"
+             style="position: relative;">
+            {% for object in object_list %}
+                <div class="grid-boxes-in masonry-brick pull-left"
+                     style="width: 362px; top: 40px; left: 15px; float:left;">
+                    <img class="img-responsive"
+                         src="{{ object.image.get_360x220_url }}"
+                         alt="{{ object.image.caption }}">
+                    <div class="grid-boxes-caption" style="height:283px;">
+                        <h3>
+                            <a href="{% url 'blog:detail' object.created.year object.created.month object.created.day object.slug %}">
+                                {{ object.title|truncatechars:150 }}</a></h3>
+                        <ul class=" list-inline grid-boxes-news">
+                            <li><span>By</span> <a href="#">
+                                {{ object.authors.all|join:', ' }}</a></li>
+                            <li>|</li>
+                            <li>
+                                <i class="fa fa-clock-o"></i> {{ object.created }}
+                            </li>
+                        </ul>
+                        <p>{{ object.description|truncatechars:210 }}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div><!--/container-->
+    </div>
+
+
+    {% endcomment %}
+
+    {% include 'snippets/pagination.html' %}
+{% endblock %}

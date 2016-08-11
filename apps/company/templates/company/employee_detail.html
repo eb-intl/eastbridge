@@ -1,16 +1,20 @@
-{% extends 'blog/base.html' %}
+{% extends 'company/base.html' %}
 {% load staticfiles i18n %}
-
-{% block meta %}
-    <meta name="description" content="Free Web tutorials">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta name="author" content="Hege Refsnes">
-{% endblock %}
 
 {% block title %}{% endblock title %}
 
 {% block content %}
-    {% include 'blog/snippets/breadcrumbs.html' %}
+    <div class="breadcrumbs" style="margin-top: 60px;">
+        <div class="container">
+            <h1 class="pull-left">{{ object.name|default:'Our Team' }}</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'team:list' %}">Team</a></li>
+                <li class="active">{{ object.name|default:'Our Team' }}</li>
+
+            </ul>
+        </div>
+    </div>
 
     <div class="blog_masonry_3col" style="padding-top: 10px;">
         <div class="container content grid-boxes masonry"

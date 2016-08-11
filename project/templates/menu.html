@@ -2,7 +2,8 @@
 
 {% for child in children %}
     <li class="page-scroll {% if child.ancestor %}ancestor{% endif %}
-        {% if child.selected %} home{% endif %}
+        {% if child.selected %} active{% endif %}
+        {% if forloop.first  %} home{% endif %}
         {% if child.children %} dropdown{% endif %}">
         {% if child.children %}
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">

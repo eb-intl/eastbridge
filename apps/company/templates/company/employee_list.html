@@ -1,0 +1,34 @@
+{% extends 'company/base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+    {% include 'company/snippets/breadcrumbs.html' %}
+
+    <div class="container content-md team-v1">
+        <ul class="list-unstyled row">
+            {% for object in object_list %}
+            <li class="col-sm-3 col-xs-6 md-margin-bottom-30">
+                <div class="team-img">
+                    <img class="img-responsive"
+                         src="{{ object.image.get_263x265_url }}" alt="{{ object.image.caption }}">
+                    <ul>
+                        {% for social in object.social.all %}
+                        <li><a href="{{ social.link }}">
+                            <i class="icon-custom icon-sm rounded-x fa fa-{{ social.icon }}"></i>
+                        </a></li>
+                            {% endfor %}
+                    </ul>
+                </div>
+                <a href="{% url 'team:detail' object.slug  %}"><h3>{{ object.name|title }}</h3></a>
+                <h4>/ {{ object.position }}</h4>
+                <p>{{ object.short_description|truncatechars:150 }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% include 'snippets/pagination.html' %}
+
+{% endblock %}

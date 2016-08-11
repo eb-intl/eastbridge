@@ -97,6 +97,7 @@ TEMPLATES = [
                 'cms.context_processors.cms_settings',
 
                 'apps.company.context_processors.footer',
+                'apps.blog.context_processors.blog',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',

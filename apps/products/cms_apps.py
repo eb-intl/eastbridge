@@ -4,9 +4,9 @@ from cms.apphook_pool import apphook_pool
 #from polls_cms_integration.cms_menus import PollsMenu
 
 
-class BlogApphook(CMSApp):
-    name = _("News Application")
-    urls = ["apps.blog.urls"]
-    app_name = "blog"
+class ProductApphook(CMSApp):
+    name = _("Product Application")
+    urls = ["apps.products.urls"]
+    app_name = "product"
 
-apphook_pool.register(BlogApphook)
+apphook_pool.register(ProductApphook)

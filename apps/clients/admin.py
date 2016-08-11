@@ -17,8 +17,8 @@ class Clientdmin(admin.ModelAdmin):
 
 @admin.register(Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
-    search_fields = ('id', 'title')
-    ordering = ['id', 'title']
-    list_display_links = ('id', 'title')
+    list_display = ('id', 'name')
+    search_fields = ('id', 'name')
+    ordering = ['id', 'name']
+    list_display_links = ('id', 'name')
 

@@ -5,6 +5,7 @@ from fontawesome.fields import IconField
 from photologue.models import Photo
 from cms.models import CMSPlugin
 
+
 class Social(models.Model):
     order = models.IntegerField(default=0)
     name = models.CharField(max_length=512, blank=True, null=True)
@@ -44,7 +45,9 @@ class Office(models.Model):
     name = models.CharField(max_length=512, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
     telephone = models.CharField(max_length=512, blank=True, null=True)
-    #location =
+    email = models.EmailField(max_length=512, blank=True, null=True)
+    #country
+    #city
     image = models.ForeignKey(Photo, related_name='offices')
     primary = models.BooleanField(default=False)
 

@@ -3,36 +3,25 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import ListView, DetailView
 
-from .models import Article
+from .models import Article, ArticleFile
 
 
 class ArticleList(ListView):
     model = Article
-    paginate_by = 10
+    paginate_by = 9
+
+
+class FileList(ListView):
+    model = ArticleFile
+    paginate_by = 9
+
+
+class ArticleSearch(ListView):
+    model = Article
+    paginate_by = 9
+    template_name = 'blog/article_search.html'
     #queryset = Article.objects.filter(publish=True).order_by('-created')
 
 
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super(ArticleList, self).get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
-
-
-
-        context['latest_news'] = Article.objects.all()[:3]
-
-        return context
-
 class ArticleDetail(DetailView):
     model = Article
-
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super(ArticleDetail, self).get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
-
-
-
-        context['latest_news'] = Article.objects.all()[:3]
-
-        return context
