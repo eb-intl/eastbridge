@@ -7,26 +7,67 @@
     {% include 'company/snippets/breadcrumbs.html' %}
 
     <div class="container content-md team-v1">
-        <ul class="list-unstyled row">
-            {% for object in object_list %}
-            <li class="col-sm-3 col-xs-6 md-margin-bottom-30">
-                <div class="team-img">
-                    <img class="img-responsive"
-                         src="{{ object.image.get_263x265_url }}" alt="{{ object.image.caption }}">
-                    <ul>
-                        {% for social in object.social.all %}
-                        <li><a href="{{ social.link }}">
-                            <i class="icon-custom icon-sm rounded-x fa fa-{{ social.icon }}"></i>
-                        </a></li>
-                            {% endfor %}
-                    </ul>
-                </div>
-                <a href="{% url 'team:detail' object.slug  %}"><h3>{{ object.name|title }}</h3></a>
-                <h4>/ {{ object.position }}</h4>
-                <p>{{ object.short_description|truncatechars:150 }}</p>
-            </li>
-            {% endfor %}
-        </ul>
+        {% if executives %}
+            <div class="headline-center margin-bottom-60">
+                <h2>Executives</h2>
+                <p>Phasellus vitae ipsum ex. Etiam eu vestibulum ante. <br>
+                    Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Morbi libero libero, imperdiet fringilla </p>
+            </div>
+
+            <ul class="list-unstyled row">
+                {% for object in executives.all %}
+                        <li class="col-sm-3 col-xs-6 md-margin-bottom-30">
+                            <div class="team-img">
+                                <img class="img-responsive"
+                                     src="{{ object.image.get_263x265_url }}" alt="{{ object.image.caption }}">
+                                <ul>
+                                    {% for social in object.social.all %}
+                                    <li><a href="{{ social.link }}">
+                                        <i class="icon-custom icon-sm rounded-x fa fa-{{ social.icon }}"></i>
+                                    </a></li>
+                                        {% endfor %}
+                                </ul>
+                            </div>
+                            <a href="{% url 'team:detail' object.slug  %}"><h3>{{ object.name|title }}</h3></a>
+                            <h4>/ {{ object.position }}</h4>
+                            <p>{{ object.short_description|truncatechars:150 }}</p>
+                        </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <div class="container content-md team-v1">
+        {% if others %}
+            <div class="headline-center margin-bottom-60">
+                <h2>Other Members</h2>
+                <p>Phasellus vitae ipsum ex. Etiam eu vestibulum ante. <br>
+                    Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Morbi libero libero, imperdiet fringilla </p>
+            </div>
+
+            <ul class="list-unstyled row">
+                {% for object in others %}
+                    {% if not object.executive %}
+                        <li class="col-sm-3 col-xs-6 md-margin-bottom-30">
+                            <div class="team-img">
+                                <img class="img-responsive"
+                                     src="{{ object.image.get_263x265_url }}" alt="{{ object.image.caption }}">
+                                <ul>
+                                    {% for social in object.social.all %}
+                                    <li><a href="{{ social.link }}">
+                                        <i class="icon-custom icon-sm rounded-x fa fa-{{ social.icon }}"></i>
+                                    </a></li>
+                                        {% endfor %}
+                                </ul>
+                            </div>
+                            <a href="{% url 'team:detail' object.slug  %}"><h3>{{ object.name|title }}</h3></a>
+                            <h4>/ {{ object.position }}</h4>
+                            <p>{{ object.short_description|truncatechars:150 }}</p>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
 
     {% include 'snippets/pagination.html' %}

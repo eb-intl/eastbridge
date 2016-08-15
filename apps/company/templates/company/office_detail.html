@@ -1,13 +1,7 @@
 {% extends 'company/base.html' %}
 {% load staticfiles i18n %}
 
-{% block meta %}
-    <meta name="description" content="{{ object.description }}">
-    <meta name="keywords" content="{{ object.tags.all|join:',' }}">
-    <meta name="author" content="{{ object.authors.all|join:", " }}">
-{% endblock %}
-
-{% block title %}{{ object.name|default:'' }} - {% endblock title %}
+{% block title %}{% endblock title %}
 
 {% block content %}
     <div class="breadcrumbs">

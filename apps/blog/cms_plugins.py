@@ -6,13 +6,12 @@ from .models import Article
 
 
 class LatestArticlePluginPublisher(CMSPluginBase):
-    #model = ServiceGroupPlugin
     module = _("Article")
     name = _("Lastest Articles Plugin")
     render_template = "blog/snippets/latest.html"
 
     def render(self, context, instance, placeholder):
-        latest = Article.objects.filter().order_by('created')[:3]
+        latest = Article.objects.filter().order_by('updated')[:3]
         context.update({'latest_news': latest})
         return context
 

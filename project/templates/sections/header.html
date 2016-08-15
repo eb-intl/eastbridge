@@ -26,6 +26,9 @@
             <div class="menu-container">
                 <ul class="nav navbar-nav">
                     {% show_menu 0 100 100 100 "menu.html" %}
+                    <li class="page-scroll">
+                        <a class="nav-link" href="#contactModal" data-toggle="modal" data-target="#contactModal"><span>Contact Us</span></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -35,109 +38,7 @@
 </nav>
 <!--=== End Header ===-->
 
-<!-- Modal -->
-<div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true"
-     style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="" method="post" id="sky-form3" class="sky-form" novalidate="novalidate" _lpchecked="1">
-                <div class="modal-header">
-                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                    <h4 id="contactModalLabel1" class="modal-title">{% trans 'Contact Us' %}</h4>
-                </div>
-                <div class="modal-body">
-                    <h4>Questions you want to ask <small>Optional</small></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
 
-                    <section>
-                        <label class="select state-success">
-                            <select name="budget" class="valid">
-                                <option value="">-- Business Stage --</option>
-                                <option value="">Development / Seed</option>
-                                <option value="">Startup</option>
-                                <option value="">Growth / Survival</option>
-                                <option value="">Maturity</option>
-                            </select>
-                            <i></i>
-                        </label>
-                    </section>
-
-
-                    <section>
-                        <label class="select state-success">
-                            <select name="budget" class="valid">
-                                <option value="0" selected="" disabled="">-- Your Budget --</option>
-                                <option value="less than 5000$">less than 5000$</option>
-                                <option value="5000$ - 10000$">5000$ - 10000$</option>
-                                <option value="10000$ - 20000$">10000$ - 20000$</option>
-                                <option value="more than 20000$">more than 20000$</option>
-                            </select>
-                            <i></i>
-                        </label>
-                    </section>
-
-                    <h4>Message</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-
-                    <div class="row">
-                        <section class="col col-6">
-                            <label class="label">Name</label>
-                            <label class="input">
-                                <i class="icon-append fa fa-user"></i>
-                                <input type="text" name="name" id="name"
-                                       style="cursor: auto; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; background-repeat: no-repeat;">
-                            </label>
-                        </section>
-                        <section class="col col-6">
-                            <label class="label">E-mail</label>
-                            <label class="input">
-                                <i class="icon-append fa fa-envelope-o"></i>
-                                <input type="email" name="email2" id="email2">
-                            </label>
-                        </section>
-                    </div>
-
-                    <section>
-                        <label class="label">Subject</label>
-                        <label class="input">
-                            <i class="icon-append fa fa-tag"></i>
-                            <input type="text" name="subject" id="subject">
-                        </label>
-                    </section>
-
-                    <section>
-                        <label class="label">Message</label>
-                        <label class="textarea">
-                            <i class="icon-append fa fa-comment"></i>
-                            <textarea rows="4" name="message" id="message"></textarea>
-                        </label>
-                    </section>
-
-
-                    <section>
-                        <label class="checkbox"><input type="checkbox" name="copy"><i></i>Send a copy to my e-mail
-                            address</label>
-                    </section>
-
-
-                    <div class="message">
-                        <i class="rounded-x fa fa-check"></i>
-                        <p>Your message was successfully sent!</p>
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn-u btn-u-default" type="button">Close</button>
-                    <button class="btn-u" type="submit">Send message</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- End Modal -->
 
 {% comment %}
 <div class="tag-box tag-box-v3 tag-text-space margin-bottom-40">

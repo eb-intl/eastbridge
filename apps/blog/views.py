@@ -28,6 +28,10 @@ class ArticleDetail(DetailView):
     model = Article
 
 
+class ArticleFileDetail(DetailView):
+    model = ArticleFile
+
+
 class LatestEntriesFeed(Feed):
     title = "EastBridge Strategic Sourcing - News"
     link = "/news/"

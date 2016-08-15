@@ -51,6 +51,7 @@
 
 	<!-- CSS Theme -->
 	<link rel="stylesheet" href="{% static 'assets/css/theme-colors/default.css' %}" id="style_color">
+    <link rel="stylesheet" href="/static/assets/css/pages/page_search_inner.css">
 	<link rel="stylesheet" href="{% static 'assets/css/theme-skins/one.dark.css' %}">
 
 	<!-- CSS Customization -->
@@ -65,8 +66,14 @@
 
     {% include 'sections/header.html' %}
 
-    {% block content %}{% endblock content %}
+    {% block container %}
+        {% block content %}
 
+        {% endblock content %}
+    {% endblock %}
+
+
+    {% include 'snippets/modals.html' %}
     {% include 'sections/footer.html' %}
 
     {% render_block "js" %}
@@ -156,6 +163,9 @@
 
 		});
 	</script>
+
+
+
 
 
     {% include 'snippets/googlecode.html' %}

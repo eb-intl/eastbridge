@@ -10,9 +10,6 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns =[
+    url(r'^office/', include('apps.company.office_urls', namespace='office')),
     url(r'^team/', include('apps.company.team_urls', namespace='team')),
-    #url(r'^team/', include('apps.company.team_urls', namespace='team')),
-    #url(r'^team/', include('apps.company.team_urls', namespace='team')),
-
-
 ]

@@ -27,6 +27,7 @@ urlpatterns += i18n_patterns('',
     url(r'^services/', include('apps.services.urls', namespace='services')),
     url(r'^products/', include('apps.products.urls', namespace='products')),
     url(r'^clients/', include('apps.clients.urls', namespace='clients')),
+    #url(r'^company/', include('apps.company.urls', namespace='company')),
 
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
     url(r'^', include('cms.urls')),
@@ -35,6 +36,6 @@ urlpatterns += i18n_patterns('',
 # This is only needed when using runserver.
 if settings.DEBUG:
     urlpatterns = patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',  # NOQA
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-        ) + staticfiles_urlpatterns() + urlpatterns  # NOQA
+        ) + staticfiles_urlpatterns() + urlpatterns

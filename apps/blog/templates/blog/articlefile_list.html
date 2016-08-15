@@ -1,16 +1,15 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles i18n %}
 
-{% block title %}{% endblock title %}
+{% block title %}Files - EastBridge Strategic Sourcing{% endblock title %}
 
 {% block meta %}
     <meta name="description" content="Free Web tutorials">
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta name="author" content="Hege Refsnes">
 {% endblock %}
 
 {% block content %}
-    <div class="breadcrumbs" style="margin-top: 60px;">
+    <div class="breadcrumbs">
         <div class="container">
             <h1 class="pull-left">{{ object.title|default:'Files' }}</h1>
             <ul class="pull-right breadcrumb">
@@ -23,15 +22,18 @@
 
 
 <!--=== Search Block Version 2 ===-->
-<div class="search-block-v2" style="margin:30px;">
+<div class="search-block-v2">
     <div class="container">
         <div class="col-md-6 col-md-offset-3">
-            <div class="input-group">
-                <input name="q" type="text" class="form-control" placeholder="Search ...">
-                <span class="input-group-btn">
-                    <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
+            <form action="" method="get">
+                <div class="input-group">
+                    <input name="q" type="text" class="form-control" placeholder="Search..." value="{{ request.GET.q }}">
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+
         </div>
     </div>
 </div><!--/container-->
@@ -51,7 +53,7 @@
 
                     <ul class="list-unstyled">
                         {% for file in files.all %}
-                        <li><i class="fa fa-{{ file.icon }}"></i><a href="{{ file.file.url }}"> {{ file.title|truncatechars:40 }}</a></li>
+                        <li><i class="fa fa-{{ file.icon }}"></i><a href="{% url 'blog:file' file.slug %}"> {{ file.title|truncatechars:40 }}</a></li>
                          {% endfor %}
                     </ul>
 
@@ -67,8 +69,8 @@
 
                     {% for article in news.all %}
                         <dl class="dl-horizontal">
-                            <dt><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}"><img src="{{ article.image.get_64x64_url }}" alt="{{ article.image.caption|safe }}"/></a></dt>
-                            <dd>
+                            {% if article.image %}<dt><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}"><img src="{{ article.image.get_64x64_url }}" alt="{{ article.image.caption|safe }}"/></a></dt>{% endif %}
+                            <dd {% if not article.image %}style="margin-left:0px;"{% endif %}>
                                 <p><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}">{{ article.description|safe|truncatechars:80 }}.</a></p>
                             </dd>
                         </dl>
@@ -81,16 +83,16 @@
         </div>
 
         <div class="col-md-9">
-            <span class="results-number">About 384,907 results</span>
+            <span class="results-number">About {{ page_obj.paginator.count }} results</span>
 
             {% for object in object_list %}
                 <!-- Begin Inner Results -->
                 <div class="inner-results">
-                    <h3><a href="{{ object.file.url }}">{{ object.title }}</a></h3>
+                    <h3><a href="{% url 'blog:file' object.slug %}">{{ object.title }}</a></h3>
                     <ul class="list-inline list-inline blog-tags">
                         <i class="fa fa-tags"></i>
                         {% for tag in object.tags.all %}
-                            <li>{{ tag.name }}‎</li>
+                            <li>{{ tag.short_name }}‎</li>
                         {% endfor %}
                     </ul>
                     <p>{{ object.description }}</p>

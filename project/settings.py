@@ -28,7 +28,7 @@ SECRET_KEY = 'w98!#4w$ku$s*6=a82s1cn%-5)y#n_@4jgnk4!5xv8!dm!g(9l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -195,7 +195,7 @@ CMS_LANGUAGES = {
 
 CMS_TEMPLATES = (
     ('homepage.html', 'Home Page'),
-    ('fullwidth.html', 'Fullwidth'),
+    ('applications.html', 'Application Page'),
     ('sidebar_left.html', 'Sidebar Left'),
     ('sidebar_right.html', 'Sidebar Right')
 )

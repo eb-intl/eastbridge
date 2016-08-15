@@ -17,10 +17,12 @@ class FileAdmin(admin.ModelAdmin):
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description')
-    search_fields = ('id', 'name', 'description')
-    ordering = ['order', 'name', 'description']
-    list_display_links = ('id', 'name')
+    list_display = ('id', 'visible', 'short_name', 'long_name')
+    search_fields = ('id', 'short_name', 'description')
+    ordering = ['order', 'short_name', 'description']
+    list_display_links = ('id', 'short_name', 'long_name')
+    prepopulated_fields = {
+        'slug': ('long_name', ), 'long_name': ('short_name', )}
 
 
 @admin.register(Article)

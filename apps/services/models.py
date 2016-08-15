@@ -48,7 +48,7 @@ class ServiceGroup(models.Model):
     description = models.TextField(blank=True, null=True)
     services = models.ManyToManyField(
         Service, related_name='groups', blank=True)
-    processes = models.ForeignKey(Process, blank=True, null=True)
+    process = models.ForeignKey(Process, blank=True, null=True)
 
     def __unicode__(self):
         return self.title

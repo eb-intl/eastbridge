@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from .views import ArticleSearch, ArticleDetail, ArticleList, FileList, \
-    LatestEntriesFeed
+    LatestEntriesFeed, ArticleFileDetail
 
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
 
     url(r'^search$', ArticleSearch.as_view(), name='search'),
     url(r'^files$', FileList.as_view(), name='files'),
+    url(r'^files/(?P<slug>[-\w]+)$', ArticleFileDetail.as_view(), name='file'),
 
     url(r'^latest\.rss', LatestEntriesFeed(), name='rss'),
 

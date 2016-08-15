@@ -4,91 +4,57 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
-   <div class="wrapper" style="margin-top: 20px;">
+   <div class="wrapper">
 
     {% include 'services/snippets/breadcrumbs.html' %}
 
+    <section id="services">
+    {% for group in object_list %}
+        <div class="container content-sm">
 
+            <div class="text-center margin-bottom-50">
+                <h2 class="title-v2 title-center">{{ group.title }}</h2>
+                <p class="space-lg-hor">{{ group.description|safe }}.</p>
+            </div>
 
-<section id="services">
-{% for group in object_list %}
-    <div class="container content-sm">
-
-        <div class="text-center margin-bottom-50">
-            <h2 class="title-v2 title-center">{{ group.title }}</h2>
-            <p class="space-lg-hor">{{ group.description|safe }}.</p>
-        </div>
-
-        <div class="row content-boxes-v4 content-boxes-v4-sm">
-            {% for service in group.services.all %}
-                <div class="col-md-4 md-margin-bottom-40">
-                    <i class="pull-left fa fa-{{ service.icon }}"></i>
-                    <div class="content-boxes-in-v4">
-                        <a href="{% url 'services:detail' service.slug %}"><h2>{% trans service.title %}</h2></a>
-                        <p>{{ service.description }}</p>
+            <div class="row content-boxes-v4 content-boxes-v4-sm">
+                {% for service in group.services.all %}
+                    <div class="col-md-4 md-margin-bottom-40">
+                        <i class="pull-left fa fa-{{ service.icon }}"></i>
+                        <div class="content-boxes-in-v4">
+                            <a href="{% url 'services:detail' service.slug %}"><h2>{% trans service.title %}</h2></a>
+                            <p>{{ service.description }}</p>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
 
-    </div>
-{% endfor %}
-</section>
 
+        <div class="process-v1 bg-color-light">
+            <div class="container content-sm">
+                <div class="headline-center margin-bottom-60">
+                    <h2>{{ group.process.title|title|default:'' }}</h2>
+                    <p>{{ group.process.description|safe|default:'' }}</p>
+                </div>
 
+                <ul class="list-inline row process-in process-border">
+                    {% for item in group.process.items.all %}
+                        <li class="col-sm-3 sm-margin-bottom-50">
+                            <div class="process-icon">
+                                <i class="rounded-x dot-active"></i>
+                            </div>
+                            <div class="process-desc">
+                                <h3>{{ item.title }}</h3>
+                                <p>{{ item.description }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
 
-   		<!--=== Process v1 ===-->
-		<div class="process-v1 bg-color-light">
-			<div class="container content-sm">
-				<div class="headline-center margin-bottom-60">
-					<h2>OUR PROCESS</h2>
-					<p>Phasellus vitae ipsum ex. Etiam eu vestibulum ante. <br> Lorem ipsum <strong>dolor</strong> sit amet, consectetur adipiscing elit. Morbi libero libero, imperdiet fringilla </p>
-				</div>
-				<ul class="list-inline row process-in process-border">
-					<li class="col-sm-3 sm-margin-bottom-50">
-						<div class="process-icon">
-							<i class="rounded-x dot-active"></i>
-						</div>
-						<div class="process-desc">
-							<h3>Concept</h3>
-							<p>Donec convallis augue lacus, sit amet imperdiet est auctor dapibus.</p>
-						</div>
-					</li>
-					<li class="col-sm-3 sm-margin-bottom-50">
-						<div class="process-icon">
-							<i class="rounded-x dot-active"></i>
-						</div>
-						<div class="process-desc">
-							<h3>Design</h3>
-							<p>Donec convallis augue lacus, sit amet imperdiet est auctor dapibus.</p>
-						</div>
-					</li>
-					<li class="col-sm-3 sm-margin-bottom-50">
-						<div class="process-icon">
-							<i class="rounded-x dot-active"></i>
-						</div>
-						<div class="process-desc">
-							<h3>Coding</h3>
-							<p>Donec convallis augue lacus, sit amet imperdiet est auctor dapibus.</p>
-						</div>
-					</li>
-					<li class="col-sm-3">
-						<div class="process-icon">
-							<i class="rounded-x dot-active"></i>
-						</div>
-						<div class="process-desc">
-							<h3>Launch</h3>
-							<p>Donec convallis augue lacus, sit amet imperdiet est auctor dapibus.</p>
-						</div>
-					</li>
-				</ul>
-			</div><!--/end container-->
-		</div>
-		<!--=== End Process v1 ===-->
-
-
-
-
-
-		</div>
+    {% endfor %}
+    </section>
+</div>
 {% endblock %}

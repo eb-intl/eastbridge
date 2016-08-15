@@ -18,3 +18,11 @@ class TeamApphook(CMSApp):
     app_name = "team"
 
 apphook_pool.register(TeamApphook)
+
+
+class OfficeApphook(CMSApp):
+    name = _("Office Application")
+    urls = ["apps.company.office_urls"]
+    app_name = "office"
+
+apphook_pool.register(OfficeApphook)

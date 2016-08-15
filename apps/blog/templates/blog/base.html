@@ -2,11 +2,16 @@
 {% load cms_tags %}
 
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% block meta %}
+    {% if object.description %}<meta name="description" content="{{ object.description }}">{% endif %}
+    {% if object.tags %}<meta name="keywords" content="">{% endif %}
+    {% if object.authors %}<meta name="author" content="{{ object.authors.all|join:", " }}">{% endif %}
+    {% if object.title or object.subtitle %}<meta name="title" content="{{ object.title }}: {{ object.subtitle|default:'' }}">{% endif %}
+    {% if object.updated %}<meta name="date" content="{{ object.updated }}">{% endif %}
+    <meta name="robots" content="index,follow">
+{% endblock %}
+
+{% block title %}{{ object.title }}{% if object.subtitle %}: {{ object.subtitle }}{% endif %} - EastBridge Strategic Sourcing{% endblock title %}
 
 
-{% block content %}
-{% endblock content %}
-
-
-
+{% block content %}{% endblock content %}

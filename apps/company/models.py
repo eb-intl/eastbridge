@@ -46,6 +46,7 @@ class Office(models.Model):
     address = models.TextField(blank=True, null=True)
     telephone = models.CharField(max_length=512, blank=True, null=True)
     email = models.EmailField(max_length=512, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     #country
     #city
     image = models.ForeignKey(Photo, related_name='offices')

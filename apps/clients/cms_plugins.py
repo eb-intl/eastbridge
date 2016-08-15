@@ -6,7 +6,6 @@ from .models import Client
 
 
 class ClientPluginPublisher(CMSPluginBase):
-    #model = Client
     module = _("Client")
     name = _("Client Carousel")
     render_template = "clients/snippets/carousel.html"

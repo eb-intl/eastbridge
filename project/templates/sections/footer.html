@@ -17,7 +17,7 @@
                 <!-- Latest -->
                 <div class="col-md-3 md-margin-bottom-40">
                     <div class="posts">
-                        <div class="headline"><a href=""><h2>Latest Posts</h2></a></div>
+                        <div class="headline"><a href="{% url 'blog:list' %}"><h2>Latest Posts</h2></a></div>
                         <ul class="list-unstyled latest-list">
                             {% for article in news.all %}
                                 <li><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}">{{ article.title }}</a><small>{{ article.created }}</small></li>
@@ -33,9 +33,9 @@
                     <div class="headline"><h2>Useful Links</h2></div>
                     <ul class="list-unstyled link-list">
                         <li><a href="{% url 'services:list' %}">Services</a><i class="fa fa-angle-right"></i></li>
-                        <li><a href="#">Factories</a><i class="fa fa-angle-right"></i></li>
                         <li><a href="{% url 'blog:rss' %}" target="_blank">RSS</a><i class="fa fa-rss"></i></li>
                         <li><a href="{% url 'blog:files' %}">Files</a><i class="fa fa-file"></i></li>
+                        <li><a href="{% url 'office:list' %}">Offices</a><i class="fa fa-angle-right"></i></li>
                     </ul>
                 </div>
                 <!-- End Link List -->
@@ -50,7 +50,7 @@
                     </address>
                     <ul class="list-unstyled link-list">
                         <li><a href="#contactModal" data-toggle="modal" data-target="#contactModal">Contact us</a><i class="fa fa-phone"></i></li>
-                        <li><a href="#">International Offices</a><i class="fa fa-angle-right"></i></li>
+
                     </ul>
                 </div>
                 <!-- End Address -->
