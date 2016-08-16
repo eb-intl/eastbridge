@@ -11,7 +11,7 @@ class SectionsPlugin(CMSPluginBase):
     model = Section
     module = _("Home Page")
     name = _("Sections")
-    render_template = "cms/plugins/sections.html"
+    render_template = "home/plugins/sections.html"
     allow_children = True
     child_classes = ['ServiceGroupPluginPublisher']
     form = SectionForm
@@ -29,6 +29,4 @@ class SectionsPlugin(CMSPluginBase):
         )
         return response
 
-
 plugin_pool.register_plugin(SectionsPlugin)
-

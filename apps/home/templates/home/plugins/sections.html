@@ -1,0 +1,17 @@
+{% load cms_tags %}
+<section id="team" class="team-section {% if instance.shaded %} bg-color-light{% endif %}">
+{% for plugin in instance.child_plugin_instances %}
+{% endfor %}
+    <div class="container content-md team-v1">
+        {% if executives %}
+            <div class="title-v1">
+                <h2>{{ instance.title }}</h2>
+                <p>{{ instance.description }}</p>
+            </div>
+
+            {% for plugin in instance.child_plugin_instances %}
+                {% render_plugin plugin %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</section>

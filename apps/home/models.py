@@ -11,6 +11,7 @@ class Section(CMSPlugin):
     """
     title = models.CharField(max_length=512, null=True, blank=True)
     text = models.TextField(null=True, blank=True)
+    shaded = models.BooleanField(default=False)
 
     def __str__(self):
         return _(u"%s sections") % self.cmsplugin_set.all().count()

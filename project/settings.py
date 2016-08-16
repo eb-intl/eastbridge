@@ -161,6 +161,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
 
     'project',
+    'apps.home',
     'apps.about',
     'apps.blog',
     'apps.services',
