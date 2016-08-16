@@ -6,8 +6,16 @@
 
 
 {% block content %}
-    {% include 'products/snippets/breadcrumbs.html' %}
-
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Products</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="{% url 'products:list' %}">Products</a></li>
+                <li class="active">{{ object.title|truncatechars:30|default:'Product' }}</li>
+            </ul>
+        </div>
+    </div>
 
     <div class="container content profile">
         <!--Left Sidebar-->
@@ -62,7 +70,7 @@
                 <!--Timeline-->
                 <div class="panel panel-profile">
                     <div class="panel-heading overflow-h">
-                        <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Experience</h2>
+                        <h2 class="panel-title heading-sm pull-left"><i class="fa fa-briefcase"></i> Timeline</h2>
                         <a href="#"><i class="fa fa-cog pull-right"></i></a>
                     </div>
                     <div class="panel-body margin-bottom-40">
@@ -109,6 +117,166 @@
     </div>
 
 
+
+
+
+    <div class="container owl-carousel-v1 owl-work-v1 margin-bottom-20">
+        <div class="headline"><h2 class="pull-left">Recent Works</h2>
+            <div class="owl-navigation">
+                <div class="customNavigation">
+                    <a class="owl-btn prev-v2"><i class="fa fa-angle-left"></i></a>
+                    <a class="owl-btn next-v2"><i class="fa fa-angle-right"></i></a>
+                </div>
+            </div><!--/navigation-->
+        </div>
+
+        <div class="owl-recent-works-v1 owl-carousel owl-theme" style="opacity: 1; display: block;">
+            <div class="owl-wrapper-outer">
+                <div class="owl-wrapper"
+                     style="width: 5700px; left: 0px; display: block; transition: all 1000ms ease; transform: translate3d(-570px, 0px, 0px);">
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img1.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Happy New Year</strong>
+								<i>Anim pariatur cliche reprehenderit</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img2.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Award Winning Agency</strong>
+								<i>Responsive Bootstrap Template</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img3.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Wolf Moon Officia</strong>
+								<i>Pariatur prehe cliche reprehrit</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img4.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Food Truck Quinoa Nesciunt</strong>
+								<i>Craft labore wes anderson cred</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img5.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Happy New Year</strong>
+								<i>Anim pariatur cliche reprehenderit</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img1.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Happy New Year</strong>
+								<i>Anim pariatur cliche reprehenderit</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img2.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Award Winning Agency</strong>
+								<i>Responsive Bootstrap Template</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img3.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Wolf Moon Officia</strong>
+								<i>Pariatur prehe cliche reprehrit</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img4.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Food Truck Quinoa Nesciunt</strong>
+								<i>Craft labore wes anderson cred</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="owl-item" style="width: 285px;">
+                        <div class="item">
+                            <a href="#">
+                                <em class="overflow-hidden">
+                                    <img class="img-responsive" src="/static/assets/img/main/img5.jpg" alt="">
+                                </em>
+							<span>
+								<strong>Happy New Year</strong>
+								<i>Anim pariatur cliche reprehenderit</i>
+							</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="owl-controls clickable">
+                <div class="owl-pagination">
+                    <div class="owl-page active"><span class=""></span></div>
+                    <div class="owl-page"><span class=""></span></div>
+                    <div class="owl-page"><span class=""></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 

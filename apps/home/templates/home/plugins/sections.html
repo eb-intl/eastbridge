@@ -1,17 +1,13 @@
 {% load cms_tags %}
-<section id="team" class="team-section {% if instance.shaded %} bg-color-light{% endif %}">
-{% for plugin in instance.child_plugin_instances %}
-{% endfor %}
+<section id="n" class="team-section {% if instance.shaded %} bg-color-light{% endif %}">
     <div class="container content-md team-v1">
-        {% if executives %}
-            <div class="title-v1">
-                <h2>{{ instance.title }}</h2>
-                <p>{{ instance.description }}</p>
-            </div>
+        <div class="title-v1">
+            <h2>{{ instance.title }}</h2>
+            {{ instance.text }}
+        </div>
 
-            {% for plugin in instance.child_plugin_instances %}
-                {% render_plugin plugin %}
-            {% endfor %}
-        {% endif %}
+        {% for plugin in instance.child_plugin_instances %}
+            {% render_plugin plugin %}
+        {% endfor %}
     </div>
 </section>

@@ -10,10 +10,15 @@ from .models import Section
 class SectionsPlugin(CMSPluginBase):
     model = Section
     module = _("Home Page")
-    name = _("Sections")
+    name = _("Section")
     render_template = "home/plugins/sections.html"
     allow_children = True
-    child_classes = ['ServiceGroupPluginPublisher']
+    child_classes = ['ServiceGroupPluginPublisher',
+                     'LatestArticlePluginPublisher',
+                     'ClientPluginPublisher',
+                     'TeamPluginPublisher',
+                     'ContentBoxPluginPublisher'
+                     ]
     form = SectionForm
 
     def render(self, context, instance, placeholder):
