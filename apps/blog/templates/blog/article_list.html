@@ -1,12 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles i18n %}
 
-{% block meta %}
-    <meta name="description" content="Free Web tutorials">
-    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-    <meta name="author" content="Hege Refsnes">
-{% endblock %}
-
 {% block title %}News - EastBridge Strategic Sourcing{% endblock title %}
 
 {% block content %}
@@ -18,15 +12,14 @@
                 <div class="grid-boxes-in masonry-brick pull-left"
                      style="width: 362px; top: 40px; left: 15px; float:left;">
                     <img class="img-responsive"
-                         src="{{ object.image.get_360x220_url }}"
+                         src="{{ object.image.get_360x220_url|default:default_image.get_360x220_url }}"
                          alt="{{ object.image.caption }}">
                     <div class="grid-boxes-caption" style="height:283px;">
                         <h3>
                             <a href="{% url 'blog:detail' object.created.year object.created.month object.created.day object.slug %}">
                                 {{ object.title|truncatechars:150 }}</a></h3>
                         <ul class=" list-inline grid-boxes-news">
-                            <li><span>By</span> <a href="#">
-                                {{ object.authors.all|join:', ' }}</a></li>
+                            <li><span>By</span> {% for author in object.authors.all %}<a href="{% url 'team:detail' author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</li>
                             <li>|</li>
                             <li>
                                 <i class="fa fa-clock-o"></i> {{ object.created }}

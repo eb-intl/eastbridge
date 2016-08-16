@@ -1,4 +1,5 @@
 {% load staticfiles cms_tags menu_tags sekizai_tags %}
+
 <!doctype html>
 <html>
     <head>
@@ -30,12 +31,15 @@
 	<link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.min.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/plugins/pace/pace-flash.css' %}">
 
-
     <link rel="stylesheet" href="/static/assets/plugins/owl-carousel/owl-carousel/owl.carousel.css">
 
 	<link rel="stylesheet" href="{% static 'assets/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/plugins/cube-portfolio/cubeportfolio/custom/custom-cubeportfolio.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/plugins/revolution-slider/rs-plugin/css/settings.css' %}" type="text/css" media="screen">
+
+
+    <link rel="stylesheet" href="/static/assets/css/pages/profile.css">
+	<link rel="stylesheet" href="/static/assets/css/pages/shortcode_timeline2.css">
 
 
 	<!--[if lt IE 9]>
@@ -60,6 +64,9 @@
 
         {% render_block "css" %}
     </head>
+
+
+
     <body>
 
     {% cms_toolbar %}
@@ -92,7 +99,6 @@
 	<script src="{% static 'assets/plugins/counter/jquery.counterup.min.js' %}"></script>
 
 	<script src="/static/assets/plugins/owl-carousel/owl-carousel/owl.carousel.js"></script>
-
 	<script src="{% static 'assets/plugins/sky-forms-pro/skyforms/js/jquery.form.min.js' %}"></script>
 	<script src="{% static 'assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js' %}"></script>
 	<script src="{% static 'assets/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js' %}"></script>
@@ -107,8 +113,8 @@
     <script src="/static/assets/js/plugins/owl-carousel.js"></script>
 	<script src="{% static 'assets/js/plugins/style-switcher.js' %}"></script>
 	<script src="{% static 'assets/js/plugins/revolution-slider.js' %}"></script>
+    <script type="text/javascript" src="/static/assets/js/plugins/fancy-box.js"></script>
 	<script src="{% static 'assets/js/plugins/cube-portfolio/cube-portfolio-lightbox.js' %}"></script>
-
 
 	<!--[if lt IE 9]>
 		<script src="{% static 'assets/plugins/respond.js' %}"></script>

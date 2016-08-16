@@ -22,7 +22,6 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns('',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^polls/', include('apps.about.urls', namespace='polls')),
     url(r'^news/', include('apps.blog.urls', namespace='news')),
     url(r'^services/', include('apps.services.urls', namespace='services')),
     url(r'^products/', include('apps.products.urls', namespace='products')),

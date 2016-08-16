@@ -1006,7 +1006,7 @@
 /*Colored Content Boxes
 ------------------------------------*/
 .service-block {
-	padding: 20px 30px;
+	padding: 60px 30px;
 	text-align: center;
 	margin-bottom: 20px;
 }
@@ -3337,7 +3337,7 @@
 	[22. Quote]
 ----------------------------------------------------*/
 .quote-v1 {
-  padding: 60px 0;
+  padding: 170px 0 150px;
   text-align: center;
   background: url(../img/patterns/5.png) repeat;
 }
@@ -3590,9 +3590,42 @@
 }
 
 .interactive-slider-v2.intro-promo-img {
-  background: url(../img/intro/promo.jpg) no-repeat;
-  background-size: cover;
-  background-position: center center;
+  padding: 80px 0;
+  background: url(../img/intro/promo.jpg) repeat-x fixed center center / cover ;
+  -webkit-animation: infiniteBackground 65s linear infinite;
+  -moz-animation: infiniteBackground 65s linear infinite;
+  animation: infiniteBackground 65s linear infinite;
+}
+@media screen and (max-width: 992px) {
+  .interactive-slider-v2.intro-promo-img {
+    -webkit-animation: none;
+    -moz-animation: none;
+    animation: none;
+  }
+}
+@keyframes infiniteBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1024px 0;
+  }
+}
+@-webkit-keyframes infiniteBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1024px 0;
+  }
+}
+@-moz-keyframe infiniteBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 1024px 0;
+  }
 }
 
 .interactive-slider-v2:after {
@@ -4297,7 +4330,7 @@
 .blog-thumb .blog-thumb-hover:hover .hover-grad {
   opacity: 1;
   transform 0.55s;
-  transition: opacity 0.55s;
+  transition: opacity 0.55s,
 }
 
 /*Blog Thumb Description*/
@@ -5708,8 +5741,8 @@
 
 .pagination li a:hover {
 	color: #fff;
-	background: #01a1dd;
-	border-color: #01a1dd;
+	background: #5fb611;
+	border-color: #5fb611;
 }
 
 .pagination > .active > a,
@@ -5718,8 +5751,8 @@
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-	border-color: #01a1dd;
-	background-color: #01a1dd;
+	border-color: #72c02c;
+	background-color: #72c02c;
 }
 
 /*Pagination Without Space*/
@@ -5739,8 +5772,8 @@
 .pager li > a:hover,
 .pager li > a:focus {
 	color: #fff;
-	background: #01a1dd;
-	border-color: #01a1dd
+	background: #5fb611;
+	border-color: #5fb611;
 }
 
 /*Pager v2 and v3
@@ -5759,7 +5792,7 @@
 .pager.pager-v3 li > a:hover,
 .pager.pager-v3 li > a:focus {
 	color: #fff;
-	background: #01a1dd;
+	background: #72c02c;
 }
 
 /*Pager Amount*/
@@ -6132,14 +6165,14 @@
 /*Tagline Boxes v1*/
 .tag-box-v1 {
 	border: solid 1px #eee;
-	border-top: solid 2px #01a1dd;
+	border-top: solid 2px #72c02c;
 }
 
 /*Tagline Boxes v2*/
 .tag-box-v2 {
 	background: #fafafa;
 	border: solid 1px #eee;
-	border-left: solid 2px #01a1dd;
+	border-left: solid 2px #72c02c;
 }
 
 /*Tagline Boxes v3*/
@@ -6174,7 +6207,7 @@
 /*Tagline Boxes v7*/
 .tag-box-v7 {
 	border: solid 1px #eee;
-	border-bottom: solid 2px #01a1dd;
+	border-bottom: solid 2px #72c02c;
 }
 
 /*--------------------------------------------------
