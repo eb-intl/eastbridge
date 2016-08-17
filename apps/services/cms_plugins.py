@@ -8,8 +8,8 @@ from .models import ServiceGroupPlugin
 class ServiceGroupPluginPublisher(CMSPluginBase):
     model = ServiceGroupPlugin  # model where plugin data are saved
     module = _("Services")
-    name = _("Services Plugin")  # name of the plugin in the interface
-    render_template = "services/snippets/service_group.html"
+    name = _("Service Group")  # name of the plugin in the interface
+    render_template = "services/plugin/service.html"
 
     def render(self, context, instance, placeholder):
         context.update({'instance': instance})

@@ -1,9 +1,9 @@
 {% load cms_tags %}
-<section id="n" class="team-section {% if instance.shaded %} bg-color-light{% endif %}">
+<section id="{{ instance.name }}" class="team-section {% if instance.shaded %} bg-color-light{% endif %}">
     <div class="container content-md team-v1">
         <div class="title-v1">
             <h2>{{ instance.title }}</h2>
-            {{ instance.text }}
+            {{ instance.text|safe }}
         </div>
 
         {% for plugin in instance.child_plugin_instances %}

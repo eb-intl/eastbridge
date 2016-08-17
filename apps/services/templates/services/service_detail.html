@@ -4,7 +4,16 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
-    {% include 'services/snippets/breadcrumbs.html' %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Services</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'services:list' %}">Services</a></li>
+                <li class="active">{{ object.title|truncatechars:30|default:'Service' }}</li>
+            </ul>
+        </div>
+    </div>
 
     <div class="container content" style="padding-top: 10px;">
         <div class="row blog-page blog-item">

@@ -17,7 +17,7 @@ class SectionsPlugin(CMSPluginBase):
                      'LatestArticlePluginPublisher',
                      'ClientPluginPublisher',
                      'TeamPluginPublisher',
-                     'ContentBoxPluginPublisher'
+                     'ContentBoxPluginPublisher',
                      ]
     form = SectionForm
 

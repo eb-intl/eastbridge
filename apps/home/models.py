@@ -11,6 +11,7 @@ class Section(CMSPlugin):
     """
     """
     title = models.CharField(max_length=512, null=True, blank=True)
+    name = models.CharField(max_length=512, null=True, blank=True)
     text = RichTextField(blank=True, null=True)
     shaded = models.BooleanField(default=False)
 
