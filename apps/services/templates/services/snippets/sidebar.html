@@ -1,0 +1,16 @@
+{% load i18n %}
+<div class="posts margin-bottom-40">
+    <div class="headline headline-md">
+        <a href="{% url 'blog:search' %}"><h2>{% trans 'Services' %}</h2></a>
+    </div>
+
+    {% for service in all_services.all %}
+        <dl class="dl-horizontal">
+            {% if service.image %}<dt><a href="{% url 'services:detail' service.slug %}"><img src="{{ service.image.get_64x64_url }}" alt="{{ service.image.caption|safe }}"/></a></dt>{% endif %}
+            <dd {% if not service.image %}style="margin-left:0px;"{% endif %}>
+                <p><a href="{% url 'services:detail' service.slug %}">{{ service.title|title|safe|truncatechars:80 }}.</a></p>
+            </dd>
+        </dl>
+    {% endfor %}
+
+</div>

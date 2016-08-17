@@ -9,8 +9,7 @@
     <div class="blog_masonry_3col" style="padding-top: 10px;">
         <div class="container content grid-boxes masonry" style="position: relative;">
             {% for object in object_list %}
-                <div class="grid-boxes-in masonry-brick pull-left"
-                     style="width: 362px; top: 40px; left: 15px; float:left;">
+                <div class="grid-boxes-in masonry-brick pull-left" style="width: 362px; top: 40px; left: 15px; float:left;">
                     <img class="img-responsive"
                          src="{{ object.image.get_360x220_url|default:default_image.get_360x220_url }}"
                          alt="{{ object.image.caption }}">
@@ -30,7 +29,7 @@
                 </div>
 
             {% endfor %}
-        </div><!--/container-->
+        </div>
     </div>
     {% include 'snippets/pagination.html' %}
 {% endblock %}

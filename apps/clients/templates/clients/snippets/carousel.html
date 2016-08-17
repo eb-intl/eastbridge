@@ -2,80 +2,12 @@
 
     <div class="owl-carousel-v1 margin-bottom-50">
         <div class="owl-slider .owl-slider-v3">
+            {% for client in clients.all %}
             <div class="item">
                 <img class="img-responsive"
-                     src="/static/assets/img/clients2/emirates.png" alt="">
+                     src="{{ client.image.get_140x140_url }}" alt="{{ client.image.caption }}">
             </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/marianos.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/ucweb.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/national-geographic.png"
-                     alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/much-more.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/baderbrau.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/co-wheels.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/bellfield.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/fddw.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/emirates.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/marianos.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/ucweb.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/national-geographic.png"
-                     alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/much-more.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/baderbrau.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/co-wheels.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/bellfield.png" alt="">
-            </div>
-            <div class="item">
-                <img class="img-responsive"
-                     src="/static/assets/img/clients2/fddw.png" alt="">
-            </div>
+            {% endfor %}
         </div>
     </div>
 

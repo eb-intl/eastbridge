@@ -10,7 +10,7 @@
             <ul class="pull-right breadcrumb">
                 <li><a href="/">Home</a></li>
                 <li><a href="{% url 'services:list' %}">Services</a></li>
-                <li class="active">{{ object.title|truncatechars:30|default:'Service' }}</li>
+                <li class="active">{{ object.title|title|truncatechars:30|default:'Service' }}</li>
             </ul>
         </div>
     </div>
@@ -18,14 +18,14 @@
     <div class="container content" style="padding-top: 10px;">
         <div class="row blog-page blog-item">
             <!-- Left Sidebar -->
-            <div class="col-md-12 md-margin-bottom-60">
+            <div class="col-md-9 md-margin-bottom-60">
                 <!--Blog Post-->
                 <div class="blog margin-bottom-40">
-                    <h1>{{ object.title }}</h1>
+                    <h1>{{ object.title|title }}</h1>
                     <div class="blog-post-tags">
                         <ul class="list-unstyled list-inline blog-info">
                             <li>
-                                <i class="fa fa-calendar"></i> {{ object.created }}
+                                <i class="fa fa-calendar"></i>{{ object.created }}
                             </li>
                             <li><i class="fa fa-pencil"></i>
                                 {{ object.authors.all|join:", " }}</li>
@@ -51,6 +51,12 @@
 
             </div>
             <!-- End Left Sidebar -->
+
+            <div class="col-md-3">
+                {% include 'services/snippets/sidebar.html' %}
+            </div>
+
+
         </div><!--/row-->
     </div>
 {% endblock %}

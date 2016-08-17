@@ -14,3 +14,9 @@ class ServiceListView(generic.ListView):
 
 class ServiceDetailView(generic.DetailView):
     model = Service
+
+    def get_context_data(self, **kwargs):
+        context = super(ServiceDetailView, self).get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context['all_services'] = Service.objects.all()
+        return context

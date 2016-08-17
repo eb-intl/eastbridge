@@ -168,6 +168,7 @@ INSTALLED_APPS = [
     'apps.company',
     'apps.clients',
     'apps.products',
+    'apps.carousel',
 ]
 
 

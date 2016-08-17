@@ -37,6 +37,7 @@ class Service(models.Model):
     image = models.ForeignKey(
         Photo, related_name='services', blank=True, null=True)
     icon = IconField()
+    tags = models.ManyToManyField('blog.Tag', related_name='services', blank=True)
 
     def __unicode__(self):
         return self.title
