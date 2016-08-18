@@ -9,7 +9,7 @@
             <ul class="pull-right breadcrumb">
                 <li><a href="/">Home</a></li>
                 <li><a href="{% url 'blog:list' %}">News</a></li>
-                <li class="active">{{ object.title|truncatechars:30|default:'News' }}</li>
+                <li class="active">{{ object.title|title|truncatechars:30|default:'News' }}</li>
 
             </ul>
         </div>
@@ -21,9 +21,9 @@
             <div class="col-md-9 md-margin-bottom-60">
                 <!--Blog Post-->
                 <div class="blog margin-bottom-40">
-                    <h1>{{ object.title }}
+                    <h2>{{ object.title|title }}
                         <small>{{ object.subtitle|default:'' }}</small>
-                    </h1>
+                    </h2>
                     <div class="blog-post-tags">
                         <ul class="list-unstyled list-inline blog-info">
                             <li>

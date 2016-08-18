@@ -10,7 +10,7 @@
             <ul class="pull-right breadcrumb">
                 <li><a href="/">Home</a></li>
                 <li><a href="{% url 'blog:list' %}">News</a></li>
-                <li class="active">{{ object.title|default:'Files' }}</li>
+                <li class="active">{{ object.title|title|default:'Files' }}</li>
             </ul>
         </div>
     </div>

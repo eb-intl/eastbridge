@@ -16,7 +16,7 @@
                     <div class="grid-boxes-caption" style="height:283px;">
                         <h3>
                             <a href="{% url 'blog:detail' object.created.year object.created.month object.created.day object.slug %}">
-                                {{ object.title|truncatechars:150 }}</a></h3>
+                                {{ object.title|title|truncatechars:150 }}</a></h3>
                         <ul class=" list-inline grid-boxes-news">
                             <li><span>By</span> {% for author in object.authors.all %}<a href="{% url 'team:detail' author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</li>
                             <li>|</li>
