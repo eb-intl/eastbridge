@@ -91,3 +91,5 @@ ENV/
 *.db
 .idea/
 static/
+
+project/local_settings.py
