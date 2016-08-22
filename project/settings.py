@@ -26,15 +26,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w98!#4w$ku$s*6=a82s1cn%-5)y#n_@4jgnk4!5xv8!dm!g(9l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
-
+ALLOWED_HOSTS = [
+    'hydyzztku6.com',
+    'www.hydyzztku6.com',
+]
 
 # Application definition
-
-
-
 
 
 ROOT_URLCONF = 'project.urls'
@@ -208,13 +207,12 @@ CMS_PLACEHOLDER_CONF = {}
 
 DATABASES = {
     'default': {
-        'CONN_MAX_AGE': 0,
-        'ENGINE': 'django.db.backends.sqlite3',
-        'HOST': 'localhost',
-        'NAME': 'project.db',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '',
+        'USER': '',
         'PASSWORD': '',
-        'PORT': '',
-        'USER': ''
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
