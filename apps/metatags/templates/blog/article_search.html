@@ -1,0 +1,121 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles i18n %}
+
+
+{% block title %}Search News - EastBridge Strategic Sourcing{% endblock title %}
+
+
+{% block content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">News Search</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'blog:list' %}">News</a></li>
+                <li class="active">Search</li>
+
+            </ul>
+        </div>
+    </div>
+
+
+<div class="search-block-v2">
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="" method="get">
+                <div class="input-group">
+                    <input name="q" type="text" class="form-control" placeholder="Search ..." value="{{ request.GET.q }}">
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="container s-results margin-bottom-50">
+    <div class="row">
+        <div class="col-md-3 hidden-xs related-search">
+
+                <!-- Posts -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md">
+                        <a href="{% url 'blog:search' %}"><h2>{% trans 'Recent Posts' %}</h2></a>
+                    </div>
+
+                    {% for article in news.all %}
+                        <dl class="dl-horizontal">
+                            {% if article.image %}<dt><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}"><img src="{{ article.image.get_64x64_url }}" alt="{{ article.image.caption|safe }}"/></a></dt>{% endif %}
+                            <dd {% if not article.image %}style="margin-left:0px;"{% endif %}>
+                                <p><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}">{{ article.description|safe|truncatechars:80 }}.</a></p>
+                            </dd>
+                        </dl>
+                    {% endfor %}
+                    </dl>
+                </div>
+
+                <!-- Files -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md">
+                        <a href="{% url 'blog:files' %}"><h2>{% trans 'Recent Files' %}</h2></a>
+                    </div>
+                    <ul class="list-unstyled">
+                        {% for file in files.all %}
+                        <li><i class="fa fa-{{ file.icon }}"></i><a href="{% url 'blog:file' file.slug %}"> {{ file.title|truncatechars:40 }}</a></li>
+                         {% endfor %}
+                    </ul>
+                </div>
+                <!-- End Files -->
+
+                <!-- Blog Latest Tweets -->
+                <div class="blog-twitter margin-bottom-30">
+                    <div class="headline headline-md">
+                        <h2><a class="twitter-timeline" data-height="400"
+                               data-lang="en"
+                               href="https://twitter.com/EB_Engineering"></a>
+                        </h2>
+                    </div>
+
+                    <script async src="//platform.twitter.com/widgets.js"
+                            charset="utf-8"></script>
+                </div>
+                <!-- End Blog Latest Tweets -->
+        </div>
+
+        <div class="col-md-9">
+            <span class="results-number">About {{ page_obj.paginator.count }} results</span>
+
+             {% for object in object_list %}
+                <div class="inner-results">
+                    <h3><a href="{% url 'blog:detail' object.created.year object.created.month object.created.day object.slug %}">{{ object.title }}</a></h3>
+                    <ul class="list-inline list-inline blog-tags">
+                        <i class="fa fa-tags"></i>
+                        {% for tag in object.tags.all %}
+                            <li>{{ tag.short_name }}‎</li>
+                        {% endfor %}
+                    </ul>
+                    <div class="overflow-h">
+                        {% if object.image %}<img src="{{ object.image.get_85x85_url }}" alt="{{ object.image.caption }}">{% endif %}
+                        <div class="overflow-a">
+                            <p class="pull-left">{{ object.description }}</p>
+                            <ul class="list-inline down-ul">
+                                <li>{{ object.updated }}</li>
+                                <li>By {% for author in object.authors.all %}<a href="{% url 'team:detail' author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+
+            <div class="margin-bottom-30"></div>
+
+
+        </div>
+    </div>
+</div>
+
+    {% include 'snippets/pagination.html' %}
+{% endblock %}

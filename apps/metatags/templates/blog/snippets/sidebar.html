@@ -1,0 +1,61 @@
+{% load i18n %}
+
+
+
+<!-- Posts -->
+<div class="posts margin-bottom-40">
+    <div class="headline headline-md">
+        <a href="{% url 'blog:search' %}"><h2>{% trans 'Recent Posts' %}</h2></a>
+    </div>
+
+    {% for article in news.all %}
+        <dl class="dl-horizontal">
+            {% if article.image %}<dt><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}"><img src="{{ article.image.get_64x64_url }}" alt="{{ article.image.caption|safe }}"/></a></dt>{% endif %}
+            <dd {% if not article.image %}style="margin-left:0px;"{% endif %}>
+                <p><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}">{{ article.description|safe|truncatechars:80 }}.</a></p>
+            </dd>
+        </dl>
+    {% endfor %}
+    </dl>
+</div><!--/posts-->
+<!-- End Posts -->
+
+
+<!-- Files -->
+<div class="posts margin-bottom-40">
+    <div class="headline headline-md">
+        <a href="{% url 'blog:files' %}"><h2>{% trans 'Recent Files' %}</h2></a>
+    </div>
+
+    <ul class="list-unstyled">
+        {% for file in files.all %}
+        <li><i class="fa fa-{{ file.icon }}"></i><a href="{% url 'blog:file' file.slug %}"> {{ file.title|truncatechars:40 }}</a></li>
+         {% endfor %}
+    </ul>
+</div>
+<!-- End Files -->
+
+
+<!-- Blog Tags -->
+<div class="headline headline-md"><h2>Tags</h2></div>
+<ul class="list-unstyled blog-tags margin-bottom-30">
+    {% for tag in object.tags.all %}
+        <li><a href="#"><i
+                class="fa fa-tags"></i> {{ tag.short_name }}</a></li>
+    {% endfor %}
+</ul>
+<!-- End Blog Tags -->
+
+<!-- Blog Latest Tweets -->
+<div class="blog-twitter margin-bottom-30">
+    <div class="headline headline-md">
+        <h2><a class="twitter-timeline" data-height="400"
+               data-lang="en"
+               href="https://twitter.com/EB_Engineering"></a>
+        </h2>
+    </div>
+
+    <script async src="//platform.twitter.com/widgets.js"
+            charset="utf-8"></script>
+</div>
+<!-- End Blog Latest Tweets -->

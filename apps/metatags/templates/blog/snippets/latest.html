@@ -1,0 +1,21 @@
+{% load staticfiles i18n %}
+<div class="container content-lg" style="margin-top: 0px;padding-top: 0px;">
+    <div class="row news-v1">
+        {% for object in latest_news.all %}
+        <div class="col-md-4 md-margin-bottom-40">
+            <div class="news-v1-in">
+                <img class="img-responsive"
+                     src="{{ object.image.get_360x220_url|default:default_image.get_360x220_url }}"
+                     alt="{{ object.image.caption }}">
+                <h3><a href="{% url 'blog:detail' object.created.year object.created.month object.created.day object.slug %}">{{ object.title }}</a></h3>
+                <p>{{ object.description }}</p>
+                <ul class="list-inline news-v1-info">
+                    <li><span>{% trans 'By' %}</span> {% for author in object.authors.all %}<a href="{% url 'team:detail' author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                    <li>|</li>
+                    <li><i class="fa fa-clock-o"></i> {{ object.created }}</li>
+                </ul>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -36,8 +36,8 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(ServiceGroup)
 class ServiceGroupAdmin(admin.ModelAdmin):
-    list_display = ('id', 'order', 'title', 'description')
-    search_fields = ('id', 'title', 'description')
-    ordering = ['order', 'id', 'title', 'description']
+    list_display = ('id', 'order', 'title')
+    search_fields = ('id', 'title')
+    ordering = ['order', 'id', 'title']
     list_display_links = ('id', 'title')
 

@@ -37,7 +37,7 @@ class Service(models.Model):
     image = models.ForeignKey(
         Photo, related_name='services', blank=True, null=True)
     icon = IconField()
-    tags = models.ManyToManyField('blog.Tag', related_name='services', blank=True)
+    tags = models.ManyToManyField('metatags.Tag', related_name='services', blank=True)
 
     def __unicode__(self):
         return self.title
@@ -46,10 +46,10 @@ class Service(models.Model):
 class ServiceGroup(models.Model):
     order = models.IntegerField(default=0)
     title = models.CharField(max_length=512, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
     services = models.ManyToManyField(
         Service, related_name='groups', blank=True)
     process = models.ForeignKey(Process, blank=True, null=True)
+    tags = models.ManyToManyField('metatags.Tag', related_name='service_groups', blank=True)
 
     def __unicode__(self):
         return self.title

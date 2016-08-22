@@ -21,6 +21,7 @@ class Product(models.Model):
     image = models.ForeignKey(
         Photo, related_name='product', blank=True, null=True)
     images = models.ManyToManyField(Photo, related_name='products', blank=True)
+    tags = models.ManyToManyField('metatags.Tag', related_name='products', blank=True)
     public = models.BooleanField(default=True)
 
     def __unicode__(self):

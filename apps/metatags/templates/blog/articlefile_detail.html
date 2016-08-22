@@ -1,0 +1,95 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles i18n %}
+
+
+{% block content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">Files</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'blog:list' %}">News</a></li>
+                <li><a href="{% url 'blog:files' %}">Files</a></li>
+                <li class="active">{{ object.title|truncatechars:30|default:'File Details' }}</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="container content" style="padding-top: 10px;">
+        <div class="row blog-page blog-item">
+            <div class="col-md-9 md-margin-bottom-60">
+                <div class="blog margin-bottom-40">
+                    <h1>{{ object.title|title }}</h1>
+                    <div class="blog-post-tags">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li><i class="fa fa-calendar"></i> {{ object.created }}</li>
+                            <li><i class="fa fa-pencil"></i> Uploaded By <a href="{% url 'team:detail' object.uploaded_by.slug %}">{{ object.uploaded_by.name }}</a></li>
+                        </ul>
+                        <ul class="list-unstyled list-inline blog-tags">
+                            <li>
+                                {% for tag in object.tags.all %}
+                                    <i class="fa fa-tags"></i>
+                                    <a href="#">{{ tag.short_name }}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+                    <p>{{ object.description|safe }}</p>
+
+
+
+
+                    <div class="call-action-v1-in text-center" style="margin-top: 20px;">
+                        <a href="{{ object.file.url }}" class="btn-u btn-u btn-u-md">DOWNLOAD</a>
+                    </div>
+
+
+
+
+
+                </div>
+                <!--End Blog Post-->
+
+                {% if object.files.all %}
+                    <div class="posts margin-bottom-40">
+                        <div class="headline headline-md">
+                            <a href="{% url 'blog:files' %}"><h2>{% trans 'Files' %}</h2></a>
+                        </div>
+
+                        <ul class="list-unstyled">
+                            {% for file in object.files.all %}
+                            <li><i class="fa fa-{{ file.icon }}"></i><a href="{% url 'blog:file' file.slug %}"> {{ file.title|truncatechars:40 }}</a></li>
+                             {% endfor %}
+                        </ul>
+
+                    </div>
+                {% endif %}
+
+
+
+                {% include 'snippets/disqus.html' %}
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="col-md-3 magazine-page">
+
+                <!-- Search Bar -->
+                <div class="headline headline-md"><h2>File Search</h2></div>
+
+                <form method="get" action="{% url 'blog:files' %}">
+                    <div class="input-group margin-bottom-40">
+                        <input type="text" class="form-control" placeholder="Search..." name="q">
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit">Go</button>
+                    </span>
+                    </div>
+                </form>
+                <!-- End Search Bar -->
+
+               {% include 'blog/snippets/sidebar.html' %}
+            </div>
+            <!-- End Right Sidebar -->
+        </div><!--/row-->
+    </div>
+{% endblock %}

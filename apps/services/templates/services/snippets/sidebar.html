@@ -1,7 +1,7 @@
 {% load i18n %}
 <div class="posts margin-bottom-40">
     <div class="headline headline-md">
-        <a href="{% url 'blog:search' %}"><h2>{% trans 'Services' %}</h2></a>
+        <a href="{% url 'services:list' %}"><h2>{% trans 'Services' %}</h2></a>
     </div>
 
     {% for service in all_services.all %}
@@ -12,5 +12,4 @@
             </dd>
         </dl>
     {% endfor %}
-
 </div>

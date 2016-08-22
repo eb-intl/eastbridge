@@ -1,0 +1,169 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}Files - EastBridge Strategic Sourcing{% endblock title %}
+
+{% block content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">{{ object.title|default:'Files' }}</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'blog:list' %}">News</a></li>
+                <li class="active">{{ object.title|title|default:'Files' }}</li>
+            </ul>
+        </div>
+    </div>
+
+
+<!--=== Search Block Version 2 ===-->
+<div class="search-block-v2">
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <form action="" method="get">
+                <div class="input-group">
+                    <input name="q" type="text" class="form-control" placeholder="Search..." value="{{ request.GET.q }}">
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div><!--/container-->
+<!--=== End Search Block Version 2 ===-->
+
+<!--=== Search Results ===-->
+<div class="container s-results margin-bottom-50">
+    <div class="row">
+        <div class="col-md-3 hidden-xs related-search">
+            <div class="row">
+
+                <!-- Files -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md">
+                        <a href="{% url 'blog:files' %}"><h2>{% trans 'Recent Files' %}</h2></a>
+                    </div>
+
+                    <ul class="list-unstyled">
+                        {% for file in files.all %}
+                        <li><i class="fa fa-{{ file.icon }}"></i><a href="{% url 'blog:file' file.slug %}"> {{ file.title|truncatechars:40 }}</a></li>
+                         {% endfor %}
+                    </ul>
+
+                </div>
+                <!-- End Files -->
+
+
+                <!-- Posts -->
+                <div class="posts margin-bottom-40">
+                    <div class="headline headline-md">
+                        <a href="{% url 'blog:search' %}"><h2>{% trans 'Recent Posts' %}</h2></a>
+                    </div>
+
+                    {% for article in news.all %}
+                        <dl class="dl-horizontal">
+                            {% if article.image %}<dt><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}"><img src="{{ article.image.get_64x64_url }}" alt="{{ article.image.caption|safe }}"/></a></dt>{% endif %}
+                            <dd {% if not article.image %}style="margin-left:0px;"{% endif %}>
+                                <p><a href="{% url 'blog:detail' article.created.year article.created.month article.created.day article.slug %}">{{ article.description|safe|truncatechars:80 }}.</a></p>
+                            </dd>
+                        </dl>
+                    {% endfor %}
+                    </dl>
+                </div><!--/posts-->
+                <!-- End Posts -->
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <span class="results-number">About {{ page_obj.paginator.count }} results</span>
+
+            {% for object in object_list %}
+                <!-- Begin Inner Results -->
+                <div class="inner-results">
+                    <h3><a href="{% url 'blog:file' object.slug %}">{{ object.title }}</a></h3>
+                    <ul class="list-inline list-inline blog-tags">
+                        <i class="fa fa-tags"></i>
+                        {% for tag in object.tags.all %}
+                            <li>{{ tag.short_name }}‎</li>
+                        {% endfor %}
+                    </ul>
+                    <p>{{ object.description }}</p>
+                    <ul class="list-inline down-ul">
+                        <li>{{ object.file.uploaded_at }}</li>
+                        <li>Uploaded By <a href="{% url 'team:detail' object.uploaded_by.slug %}">{{ object.uploaded_by.name }}</a></li>
+                    </ul>
+                </div>
+                <!-- Begin Inner Results -->
+                <hr>
+            {% endfor %}
+
+
+
+            <div class="margin-bottom-30"></div>
+
+            {% include 'snippets/pagination.html' %}
+        </div><!--/col-md-10-->
+    </div>
+</div><!--/container-->
+<!--=== End Search Results ===-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+
+
+
+    <div class="blog_masonry_3col" style="padding-top: 10px;">
+        <div class="container content grid-boxes masonry"
+             style="position: relative;">
+            {% for object in object_list %}
+                <div class="grid-boxes-in masonry-brick pull-left"
+                     style="width: 362px; top: 40px; left: 15px; float:left;">
+                    <img class="img-responsive"
+                         src="{{ object.image.get_360x220_url }}"
+                         alt="{{ object.image.caption }}">
+                    <div class="grid-boxes-caption" style="height:283px;">
+                        <h3>
+                            <a href="{% url 'blog:detail' object.created.year object.created.month object.created.day object.slug %}">
+                                {{ object.title|truncatechars:150 }}</a></h3>
+                        <ul class=" list-inline grid-boxes-news">
+                            <li><span>By</span> <a href="#">
+                                {{ object.authors.all|join:', ' }}</a></li>
+                            <li>|</li>
+                            <li>
+                                <i class="fa fa-clock-o"></i> {{ object.created }}
+                            </li>
+                        </ul>
+                        <p>{{ object.description|truncatechars:210 }}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div><!--/container-->
+    </div>
+
+
+    {% endcomment %}
+
+    {% include 'snippets/pagination.html' %}
+{% endblock %}

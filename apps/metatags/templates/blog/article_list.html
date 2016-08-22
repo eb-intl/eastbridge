@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles i18n %}
+
+{% block title %}News - EastBridge Strategic Sourcing{% endblock title %}
+
+{% block content %}
+    {% include 'blog/snippets/breadcrumbs.html' %}
+
+    <div class="blog_masonry_3col" style="padding-top: 10px;">
+        <div class="container content grid-boxes masonry" style="position: relative;">
+            {% for object in object_list %}
+                <div class="grid-boxes-in masonry-brick pull-left" style="width: 362px; top: 40px; left: 15px; float:left;">
+                    <img class="img-responsive"
+                         src="{{ object.image.get_360x220_url|default:default_image.get_360x220_url }}"
+                         alt="{{ object.image.caption }}">
+                    <div class="grid-boxes-caption" style="height:283px;">
+                        <h3>
+                            <a href="{% url 'blog:detail' object.created.year object.created.month object.created.day object.slug %}">
+                                {{ object.title|title|truncatechars:150 }}</a></h3>
+                        <ul class=" list-inline grid-boxes-news">
+                            <li><span>By</span> {% for author in object.authors.all %}<a href="{% url 'team:detail' author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                            <li>|</li>
+                            <li>
+                                <i class="fa fa-clock-o"></i> {{ object.created }}
+                            </li>
+                        </ul>
+                        <p>{{ object.description|truncatechars:210 }}</p>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+    {% include 'snippets/pagination.html' %}
+{% endblock %}

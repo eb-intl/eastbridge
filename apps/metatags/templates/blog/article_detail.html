@@ -1,0 +1,95 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles i18n %}
+
+
+{% block content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h1 class="pull-left">News</h1>
+            <ul class="pull-right breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="{% url 'blog:list' %}">News</a></li>
+                <li class="active">{{ object.title|title|truncatechars:30|default:'News' }}</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="container content" style="padding-top: 10px;">
+        <div class="row blog-page blog-item">
+            <!-- Left Sidebar -->
+            <div class="col-md-9 md-margin-bottom-60">
+                <!--Blog Post-->
+                <div class="blog margin-bottom-40">
+                    <h2>{{ object.title|title }}
+                        <small>{{ object.subtitle|default:'' }}</small>
+                    </h2>
+                    <div class="blog-post-tags">
+                        <ul class="list-unstyled list-inline blog-info">
+                            <li>
+                                <i class="fa fa-calendar"></i> {{ object.created }}
+                            </li>
+                            <li><i class="fa fa-pencil"></i> By {% for author in object.authors.all %}<a href="{% url 'team:detail' author.slug %}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                        </ul>
+                        <ul class="list-unstyled list-inline blog-tags">
+                            <li>
+                                {% for tag in object.tags.all %}
+                                    <i class="fa fa-tags"></i>
+                                    <a href="#">{{ tag.short_name }}</a>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="blog-img">
+                        <img class="img-responsive"
+                             src="{{ object.image.get_360x220_url }}"
+                             alt="{{ object.image.caption|safe }}">
+                    </div>
+                    <p>{{ object.body|safe }}</p><br>
+                </div>
+                <!--End Blog Post-->
+
+                {% if object.files.all %}
+                    <div class="posts margin-bottom-40">
+                        <div class="headline headline-md">
+                            <a href="{% url 'blog:files' %}"><h2>{% trans 'Files' %}</h2></a>
+                        </div>
+
+                        <ul class="list-unstyled">
+                            {% for file in object.files.all %}
+                            <li><i class="fa fa-{{ file.icon }}"></i><a href="{% url 'blog:file' file.slug %}"> {{ file.title|truncatechars:40 }}</a></li>
+                             {% endfor %}
+                        </ul>
+
+                    </div>
+                {% endif %}
+
+
+
+                {% include 'snippets/disqus.html' %}
+            </div>
+            <!-- End Left Sidebar -->
+
+            <!-- Right Sidebar -->
+            <div class="col-md-3 magazine-page">
+
+                <!-- Search Bar -->
+                <div class="headline headline-md"><h2>News Search</h2></div>
+
+                <form method="get" action="{% url 'blog:search' %}">
+                    <div class="input-group margin-bottom-40">
+                        <input type="text" class="form-control" placeholder="Search..." name="q">
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="submit">Go</button>
+                    </span>
+                    </div>
+                </form>
+                <!-- End Search Bar -->
+
+
+               {% include 'blog/snippets/sidebar.html' %}
+            </div>
+            <!-- End Right Sidebar -->
+        </div><!--/row-->
+    </div>
+{% endblock %}

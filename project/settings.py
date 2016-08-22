@@ -167,6 +167,7 @@ INSTALLED_APPS = [
     'apps.clients',
     'apps.products',
     'apps.carousel',
+    'apps.metatags',
 ]
 
 
