@@ -433,7 +433,7 @@
   },
   {
     "fields": {
-      "model": "tag",
+      "model": "metatags.tag",
       "app_label": "blog"
     },
     "model": "contenttypes.contenttype",
@@ -21774,7 +21774,7 @@
       "slug": "wip",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 1
   },
   {
@@ -21787,7 +21787,7 @@
       "slug": "supplier-quality-engineers",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 2
   },
   {
@@ -21800,7 +21800,7 @@
       "slug": "suppliers",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 4
   },
   {
@@ -21813,7 +21813,7 @@
       "slug": "bil-of-materials",
       "icon": "list"
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 5
   },
   {
@@ -21826,7 +21826,7 @@
       "slug": "tooling",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 6
   },
   {
@@ -21839,7 +21839,7 @@
       "slug": "mut",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 7
   },
   {
@@ -21852,7 +21852,7 @@
       "slug": "news",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 8
   },
   {
@@ -21865,7 +21865,7 @@
       "slug": "china",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 9
   },
   {
@@ -21878,7 +21878,7 @@
       "slug": "cr-code",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 10
   },
   {
@@ -21891,7 +21891,7 @@
       "slug": "customs",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 11
   },
   {
@@ -21904,7 +21904,7 @@
       "slug": "Importer-Export",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 13
   },
   {
@@ -21917,7 +21917,7 @@
       "slug": "hs-code-harmonized-commodity-description-and-coding-system-code",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 15
   },
   {
@@ -21930,18 +21930,14 @@
       "slug": "prc-peoples-republic-china",
       "icon": null
     },
-    "model": "blog.tag",
+    "model": "metatags.tag",
     "pk": 16
   },
   {
     "fields": {
       "description": "Software Developers\r\nInformation Returns\r\nLike - Click this link to Add this page to your bookmarks Share - Click this link to Share this page through email or social media Print - Click this link to Print this page\r\nInformation Returns\r\nAffordable Care Act Information Returns (AIR) Program",
       "title": "Affordable Care Act Information Returns (AIR) Program",
-      "tags": [
-        1,
-        2,
-        4
-      ],
+      "tags": [],
       "file": 2,
       "uploaded_by": 1,
       "slug": "affordable-care-act-information-returns-air-program",
@@ -21954,9 +21950,7 @@
     "fields": {
       "description": "",
       "title": "Tooling Part Quote",
-      "tags": [
-        6
-      ],
+      "tags": [],
       "file": 3,
       "uploaded_by": 1,
       "slug": "tooling-part-quote",
@@ -21969,9 +21963,7 @@
     "fields": {
       "description": "The following bilingual (Chinese/English) agreement is what we use to protect our clients when they\u2019re ordering tooling in support of a new product development program. It defines who owns the tooling as well as the terms and conditions for it\u2019s use. Good agreements that are clearly written in two languages make for healthy customer-vendor relationships. Please feel free to review and download our template.",
       "title": "China Tooling Agreement",
-      "tags": [
-        6
-      ],
+      "tags": [],
       "file": 4,
       "uploaded_by": 1,
       "slug": "china-tooling-agreement",
@@ -21984,9 +21976,7 @@
     "fields": {
       "description": "The following bilingual (Chinese/English) agreement is what we use to protect our clients when they\u2019re ordering tooling in support of a new product development program. It defines who owns the tooling as well as the terms and conditions for it\u2019s use. Good agreements that are clearly written in two languages make for healthy customer-vendor relationships. Please feel free to review and download our template.",
       "title": "ESBS Tooling Contract Template",
-      "tags": [
-        6
-      ],
+      "tags": [],
       "file": 5,
       "uploaded_by": 1,
       "slug": "esbs-tooling-contract-template",
@@ -21999,9 +21989,7 @@
     "fields": {
       "description": "EastBridge Engineering Appoints Vendor Management Engineer in China",
       "title": "EastBridge Engineering Appoints Vendor Management Engineer in China",
-      "tags": [
-        8
-      ],
+      "tags": [],
       "file": 6,
       "uploaded_by": 1,
       "slug": "eastbridge-engineering-appoints-vendor-management-engineer-china",
@@ -22031,11 +22019,7 @@
         2
       ],
       "slug": "product-inspection-checklist-eight-steps-success",
-      "tags": [
-        1,
-        4,
-        10
-      ]
+      "tags": []
     },
     "model": "blog.article",
     "pk": 1
@@ -22060,9 +22044,7 @@
         1
       ],
       "slug": "source-development-eastbridge-process",
-      "tags": [
-        1
-      ]
+      "tags": []
     },
     "model": "blog.article",
     "pk": 2
@@ -22104,9 +22086,7 @@
         1
       ],
       "slug": "why-your-annual-order-rate-means-nothing",
-      "tags": [
-        1
-      ]
+      "tags": []
     },
     "model": "blog.article",
     "pk": 4
@@ -22272,9 +22252,7 @@
         1
       ],
       "slug": "lower-end-bom-aint-nothing-real-thing-baby",
-      "tags": [
-        5
-      ]
+      "tags": []
     },
     "model": "blog.article",
     "pk": 12
@@ -22465,9 +22443,7 @@
         1
       ],
       "slug": "free-download-quote-whole-quote-and-nothing-quote",
-      "tags": [
-        6
-      ]
+      "tags": []
     },
     "model": "blog.article",
     "pk": 21
@@ -22617,9 +22593,7 @@
         1
       ],
       "slug": "manufacturing-dirty-business-keep-your-tooling-clean",
-      "tags": [
-        7
-      ]
+      "tags": []
     },
     "model": "blog.article",
     "pk": 28
@@ -22642,9 +22616,7 @@
         1
       ],
       "slug": "eastbridge-engineering-appoints-vendor-management-engineer-china",
-      "tags": [
-        8
-      ]
+      "tags": []
     },
     "model": "blog.article",
     "pk": 29
@@ -23165,7 +23137,6 @@
         7,
         8
       ],
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "order": 0,
       "title": "Our Services"
     },

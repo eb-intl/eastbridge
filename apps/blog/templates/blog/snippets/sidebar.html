@@ -37,6 +37,7 @@
 
 
 <!-- Blog Tags -->
+{% if object.tags.all %}
 <div class="headline headline-md"><h2>Tags</h2></div>
 <ul class="list-unstyled blog-tags margin-bottom-30">
     {% for tag in object.tags.all %}
@@ -44,6 +45,7 @@
                 class="fa fa-tags"></i> {{ tag.short_name }}</a></li>
     {% endfor %}
 </ul>
+{% endif %}
 <!-- End Blog Tags -->
 
 <!-- Blog Latest Tweets -->

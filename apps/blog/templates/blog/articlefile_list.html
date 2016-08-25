@@ -85,7 +85,7 @@
                 <div class="inner-results">
                     <h3><a href="{% url 'blog:file' object.slug %}">{{ object.title }}</a></h3>
                     <ul class="list-inline list-inline blog-tags">
-                        <i class="fa fa-tags"></i>
+                        {% if object.tags.all %}<i class="fa fa-tags"></i>{% endif %}
                         {% for tag in object.tags.all %}
                             <li>{{ tag.short_name }}‎</li>
                         {% endfor %}

@@ -33,8 +33,8 @@
                         </ul>
                         <ul class="list-unstyled list-inline blog-tags">
                             <li>
+                                {% if object.tags.all %}<i class="fa fa-tags"></i>{% endif %}
                                 {% for tag in object.tags.all %}
-                                    <i class="fa fa-tags"></i>
                                     <a href="#">{{ tag.short_name }}</a>
                                 {% endfor %}
                             </li>
