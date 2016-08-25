@@ -9,19 +9,6 @@ from fontawesome.fields import IconField
 from cms.models import CMSPlugin
 
 
-class Tag(models.Model):
-    slug = models.SlugField(max_length=512)
-    order = models.IntegerField(default=0)
-    icon = IconField()
-    short_name = models.CharField(max_length=512, blank=True, null=True)
-    long_name = models.CharField(max_length=512, blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
-    visible = models.BooleanField(default=False)
-
-    def __unicode__(self):
-        return '{0}-{1}'.format(self.short_name, self.long_name)
-
-
 class ArticleFile(models.Model):
     slug = models.SlugField(max_length=512, unique=True)
     file = FilerFileField(null=True, blank=True)
@@ -29,7 +16,7 @@ class ArticleFile(models.Model):
     title = models.CharField(max_length=512, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     uploaded_by = models.ForeignKey('company.Employee', blank=True, null=True)
-    tags = models.ManyToManyField(Tag, related_name='files')
+    tags = models.ManyToManyField('metatags.Tag', related_name='files')
 
     def __unicode__(self):
         return self.title
@@ -51,7 +38,7 @@ class Article(models.Model):
     image = models.ForeignKey(
         Photo, related_name='articles', blank=True, null=True)
     authors = models.ManyToManyField('company.Employee', blank=True)
-    tags = models.ManyToManyField(Tag, related_name='articles')
+    tags = models.ManyToManyField('metatags.Tag', related_name='articles')
     gallery = models.ManyToManyField(Gallery, blank=True)
     files = models.ManyToManyField(
         ArticleFile, related_name='articles', blank=True)
