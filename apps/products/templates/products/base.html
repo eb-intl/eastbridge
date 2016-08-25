@@ -1,11 +1,27 @@
 {% extends CMS_TEMPLATE %}
-{% load cms_tags %}
+{% load cms_tags metatags %}
 
+{% block meta %}
+    {% spaceless %}
+    {% if object %}
+        {% if object.description %}<meta name="description" content="{{ object.description }}">{% endif %}
+        {% if object.tags %}
+            <meta name="keywords" content="{{ object|keywords }}">
+        {% endif %}
+        {% if object.authors %}<meta name="author" content="{{ object.authors.all|join:", " }}">{% endif %}
+        {% if object.title or object.subtitle %}<meta name="title" content="{{ object.title }}: {{ object.subtitle|default:'' }}">{% endif %}
+        {% if object.updated %}<meta name="date" content="{{ object.updated }}">{% endif %}
+    {% elif object_list %}
+        <meta name="description" content="Products created by EastBridge Strategic Sourcing">
+        <meta name="keywords" content="{{ object_list|keywords }}">
+    {% endif %}
+    <meta name="robots" content="index,follow">
+    {% endspaceless %}
+{% endblock %}
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% block title %}Products{% endblock %}
 
-{% block content %}
-{% endblock content %}
+{% block content %}{% endblock content %}
 
 
 
