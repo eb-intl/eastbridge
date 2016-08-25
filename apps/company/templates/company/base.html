@@ -1,5 +1,5 @@
 {% extends CMS_TEMPLATE %}
-{% load cms_tags %}
+{% load cms_tags metatags %}
 
 {% block meta %}
     {% spaceless %}
@@ -19,7 +19,7 @@
     {% endspaceless %}
 {% endblock %}
 
-{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+{% block title %}{% if  object.name %}{{ object.name }} - {% endif %}EastBridge Strategic Sourcing{% endblock title %}
 
 {% block content %}
 {% endblock content %}
