@@ -19,6 +19,6 @@
     {% endspaceless %}
 {% endblock %}
 
-{% block title %}{{ object.title }}{% if object.subtitle %}: {{ object.subtitle }}{% endif %} - EastBridge Strategic Sourcing{% endblock title %}
+{% block title %}{{ object.title|default:'News' }}{% if object.subtitle %}: {{ object.subtitle }}{% endif %} - EastBridge Strategic Sourcing{% endblock title %}
 
 {% block content %}{% endblock content %}

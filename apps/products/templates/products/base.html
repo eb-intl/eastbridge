@@ -19,7 +19,8 @@
     {% endspaceless %}
 {% endblock %}
 
-{% block title %}Products{% endblock %}
+{% block title %}{{ object.name|default:'Products' }} - EastBridge Strategic Sourcing{% endblock title %}
+
 
 {% block content %}{% endblock content %}
 

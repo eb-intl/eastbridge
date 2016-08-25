@@ -19,7 +19,7 @@
     {% endspaceless %}
 {% endblock %}
 
-{% block title %}Clients{% endblock title %}
+{% block title %}{{ object.title|default:'Clients' }} - EastBridge Strategic Sourcing{% endblock title %}
 
 {% block content %}{% endblock content %}
 
