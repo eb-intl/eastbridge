@@ -8,6 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('photologue', '0010_auto_20160105_1307'),
+        ('metatags', '0001_initial'),
     ]
 
     operations = [
@@ -24,6 +25,7 @@ class Migration(migrations.Migration):
                 ('public', models.BooleanField(default=True)),
                 ('image', models.ForeignKey(related_name='product', blank=True, to='photologue.Photo', null=True)),
                 ('images', models.ManyToManyField(related_name='products', to='photologue.Photo', blank=True)),
+                ('tags', models.ManyToManyField(related_name='products', to='metatags.Tag', blank=True)),
             ],
         ),
     ]

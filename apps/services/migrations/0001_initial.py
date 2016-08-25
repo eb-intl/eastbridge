@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('cms', '0014_auto_20160404_1908'),
         ('photologue', '0010_auto_20160105_1307'),
-        ('blog', '0002_auto_20160822_0850'),
+        ('metatags', '0001_initial'),
     ]
 
     operations = [
@@ -44,7 +44,7 @@ class Migration(migrations.Migration):
                 ('text', models.TextField(null=True, blank=True)),
                 ('icon', fontawesome.fields.IconField(max_length=60, blank=True)),
                 ('image', models.ForeignKey(related_name='services', blank=True, to='photologue.Photo', null=True)),
-                ('tags', models.ManyToManyField(related_name='services', to='blog.Tag', blank=True)),
+                ('tags', models.ManyToManyField(related_name='services', to='metatags.Tag', blank=True)),
             ],
         ),
         migrations.CreateModel(
@@ -53,9 +53,9 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('order', models.IntegerField(default=0)),
                 ('title', models.CharField(max_length=512, null=True, blank=True)),
-                ('description', models.TextField(null=True, blank=True)),
                 ('process', models.ForeignKey(blank=True, to='services.Process', null=True)),
                 ('services', models.ManyToManyField(related_name='groups', to='services.Service', blank=True)),
+                ('tags', models.ManyToManyField(related_name='service_groups', to='metatags.Tag', blank=True)),
             ],
         ),
         migrations.CreateModel(

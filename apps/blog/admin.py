@@ -3,7 +3,7 @@
 """
 from django.contrib import admin
 
-from models import Article, Tag, ArticleFile
+from models import Article, ArticleFile
 
 
 @admin.register(ArticleFile)
@@ -13,16 +13,6 @@ class FileAdmin(admin.ModelAdmin):
     ordering = ['title']
     list_display_links = ('id', 'title')
     prepopulated_fields = {'slug': ('title',)}
-
-
-@admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
-    list_display = ('id', 'visible', 'short_name', 'long_name')
-    search_fields = ('id', 'short_name', 'description')
-    ordering = ['order', 'short_name', 'description']
-    list_display_links = ('id', 'short_name', 'long_name')
-    prepopulated_fields = {
-        'slug': ('long_name', ), 'long_name': ('short_name', )}
 
 
 @admin.register(Article)

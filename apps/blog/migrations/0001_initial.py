@@ -11,6 +11,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('filer', '0006_auto_20160623_1627'),
+        ('metatags', '0001_initial'),
     ]
 
     operations = [
@@ -37,27 +38,10 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=512, null=True, blank=True)),
                 ('description', models.TextField(null=True, blank=True)),
                 ('file', filer.fields.file.FilerFileField(blank=True, to='filer.File', null=True)),
+                ('tags', models.ManyToManyField(related_name='files', to='metatags.Tag')),
             ],
             options={
                 'verbose_name_plural': 'Files',
             },
-        ),
-        migrations.CreateModel(
-            name='Tag',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('slug', models.SlugField(max_length=512)),
-                ('order', models.IntegerField(default=0)),
-                ('icon', fontawesome.fields.IconField(max_length=60, blank=True)),
-                ('short_name', models.CharField(max_length=512, null=True, blank=True)),
-                ('long_name', models.CharField(max_length=512, null=True, blank=True)),
-                ('description', models.TextField(null=True, blank=True)),
-                ('visible', models.BooleanField(default=False)),
-            ],
-        ),
-        migrations.AddField(
-            model_name='articlefile',
-            name='tags',
-            field=models.ManyToManyField(related_name='files', to='blog.Tag'),
         ),
     ]
