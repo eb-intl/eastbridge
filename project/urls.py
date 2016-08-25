@@ -26,7 +26,7 @@ urlpatterns += i18n_patterns('',
     url(r'^services/', include('apps.services.urls', namespace='services')),
     url(r'^products/', include('apps.products.urls', namespace='products')),
     url(r'^clients/', include('apps.clients.urls', namespace='clients')),
-    #url(r'^company/', include('apps.company.urls', namespace='company')),
+    url(r'^company/', include('apps.company.urls', namespace='company')),
 
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
     url(r'^', include('cms.urls')),

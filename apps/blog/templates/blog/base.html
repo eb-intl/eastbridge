@@ -2,6 +2,7 @@
 {% load cms_tags metatags %}
 
 {% block meta %}
+    {% spaceless %}
     {% if object %}
         {% if object.description %}<meta name="description" content="{{ object.description }}">{% endif %}
         {% if object.tags %}
@@ -15,6 +16,7 @@
         <meta name="keywords" content="{{ object_list|keywords }}">
     {% endif %}
     <meta name="robots" content="index,follow">
+    {% endspaceless %}
 {% endblock %}
 
 {% block title %}{{ object.title }}{% if object.subtitle %}: {{ object.subtitle }}{% endif %} - EastBridge Strategic Sourcing{% endblock title %}

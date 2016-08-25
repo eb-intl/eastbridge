@@ -8,8 +8,11 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+from .views import send_email
 
 urlpatterns =[
     url(r'^office/', include('apps.company.office_urls', namespace='office')),
     url(r'^team/', include('apps.company.team_urls', namespace='team')),
+
+    url(r'^email$', send_email, name='email'),
 ]

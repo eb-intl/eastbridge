@@ -27,6 +27,7 @@ class Client(models.Model):
     private = models.BooleanField(default=True)
     products = models.ManyToManyField(
         'products.Product', related_name='clients', blank=True)
+    tags = models.ManyToManyField('metatags.Tag', related_name='clients', blank=True)
     testimonials = models.ManyToManyField(
         Testimonial, related_name='clients', blank=True)
 
