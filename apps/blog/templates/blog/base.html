@@ -1,20 +1,18 @@
 {% extends CMS_TEMPLATE %}
-{% load cms_tags blog_meta %}
+{% load cms_tags metatags %}
 
 {% block meta %}
     {% if object %}
         {% if object.description %}<meta name="description" content="{{ object.description }}">{% endif %}
         {% if object.tags %}
-            <meta name="keywords" content="{{ object|short_keywords }}">
-            <meta name="keywords" content="{{ object|long_keywords }}">
+            <meta name="keywords" content="{{ object|keywords }}">
         {% endif %}
         {% if object.authors %}<meta name="author" content="{{ object.authors.all|join:", " }}">{% endif %}
         {% if object.title or object.subtitle %}<meta name="title" content="{{ object.title }}: {{ object.subtitle|default:'' }}">{% endif %}
         {% if object.updated %}<meta name="date" content="{{ object.updated }}">{% endif %}
     {% elif object_list %}
         <meta name="description" content="EastBridge Strategic News">
-        <meta name="keywords" content="{{ object_list|short_keywords }}">
-        <meta name="keywords" content="{{ object_list|long_keywords }}">
+        <meta name="keywords" content="{{ object_list|keywords }}">
     {% endif %}
     <meta name="robots" content="index,follow">
 {% endblock %}
